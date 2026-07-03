@@ -67,7 +67,7 @@ const resonators: Resonator[] = [
     borderColor: "#FFF691",
   },
   {
-    userResonatorId: 9,
+    userResonatorId: null,
     resonatorName: "설지",
     rarity: 4,
 		releaseVersion: 101,

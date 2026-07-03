@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 export type Resonator = {
-  userResonatorId: Number;
+  userResonatorId: number | null;
   resonatorName: string;
-  rarity: Number;
-  releaseVersion: Number;
+  rarity: number;
+  releaseVersion: number;
   thumbnailImageUrl: string;
   borderColor: string;
 };
@@ -30,7 +30,12 @@ export default function ResonatorCard({resonator, className = "", onClick,}: Pro
           src={resonator.thumbnailImageUrl}
           alt={resonator.resonatorName}
           fill
-          className="object-cover"
+          className={
+            "object-cover " +
+            (resonator.userResonatorId === null
+              ? "grayscale opacity-60"
+              : "")
+          }
         />
       </div>
 
