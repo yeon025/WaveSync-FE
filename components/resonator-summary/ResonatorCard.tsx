@@ -8,13 +8,13 @@ export type ResonatorSummary = {
   thumbnailImageUrl: string;
 };
 
-type Props = {
+type ResonatorSummaryProps = {
   resonator: ResonatorSummary;
   className?: string;
   onClick?: () => void;
 };
 
-export default function ResonatorCard({resonator, className = "", onClick,}: Props) {
+export default function ResonatorCard({resonator, className = "", onClick,}: ResonatorSummaryProps) {
   return (
     <article
       onClick={onClick}

@@ -4,7 +4,7 @@ import ResonatorGrid from "@/components/resonator-summary/ResonatorGrid";
 import { ResonatorSummary } from "@/components/resonator-summary/ResonatorCard";
 import Button from "@/components/common/Button";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import IconButton from "@/components/common/IconButton";
 
 
 const resonators: ResonatorSummary[] = [
@@ -98,19 +98,12 @@ export default function Page() {
 
         <div className="mt-8 mb-8 flex items-center justify-end gap-8">
           {/* 삭제 버튼 */}
-          <button
-            type="button"
-            aria-label="삭제"
-            // onClick={}
-            className="flex cursor-pointer"
-          >
-            <Image
-              src="/trash-bin.svg"
-              alt="삭제"
-              width={38}
-              height={38}
-            />
-          </button>
+          <IconButton
+            icon="/trash-bin.svg"
+            alt="삭제"
+            size={38}
+            // onClick={handleDelete}
+          />
 
           {/* 업로드 페이지로 이동 버튼 */}
           <Button

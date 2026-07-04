@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import UploadForm from "@/components/upload/UploadForm";
+import IconButton from "@/components/common/IconButton";
 
 export default function Upload() {
   const router = useRouter();
@@ -10,14 +11,13 @@ export default function Upload() {
   return (
     <main className="relative flex min-h-screen items-center justify-center px-4 py-6 md:px-8">
       {/* 닫기 버튼 */}
-      <button
-        type="button"
-        aria-label="닫기"
+      <IconButton
+        icon="/close.svg"
+        alt="닫기"
+        size={24}
         onClick={() => router.push("/")}
-        className="absolute right-6 top-6 flex h-6 w-6 cursor-pointer items-center justify-center md:right-8 md:top-8"
-      >
-        <Image src="/close.svg" alt="닫기" width={24} height={24} />
-      </button>
+        className="absolute right-6 top-6 h-6 w-6 md:right-8 md:top-8"
+      />
 
       {/* 가운데 정렬되는 콘텐츠 */}
       <div className="w-full max-w-3xl">
