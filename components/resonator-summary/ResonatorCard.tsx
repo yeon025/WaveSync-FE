@@ -1,16 +1,15 @@
 import Image from "next/image";
 
-export type Resonator = {
+export type ResonatorSummary = {
   userResonatorId: number | null;
   resonatorName: string;
   rarity: number;
   releaseVersion: number;
   thumbnailImageUrl: string;
-  borderColor: string;
 };
 
 type Props = {
-  resonator: Resonator;
+  resonator: ResonatorSummary;
   className?: string;
   onClick?: () => void;
 };
@@ -41,10 +40,10 @@ export default function ResonatorCard({resonator, className = "", onClick,}: Pro
 
       {/* 이름 */}
       <div
-        className="mt-1 flex items-center justify-center border-1 bg-[#2a2c32] py-0.5"
-        style={{ borderColor: resonator.borderColor }}
+        className="mt-1 flex items-center justify-center border-1 py-0.5"
+        style={{ borderColor: resonator.rarity == 4 ? "#9d6bb9" : "#FFF691" }}
       >
-        <span className="text-white text-sm sm:text-base font-semibold truncate">
+        <span className="text-sm sm:text-base font-semibold truncate">
           {resonator.resonatorName}
         </span>
       </div>

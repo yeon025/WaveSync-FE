@@ -1,99 +1,126 @@
-import ResonatorGrid from "@/components/resonator-summary/ResonatorGrid";
-import { Resonator } from "@/components/resonator-summary/ResonatorCard";
+"use client";
 
-const resonators: Resonator[] = [
+import ResonatorGrid from "@/components/resonator-summary/ResonatorGrid";
+import { ResonatorSummary } from "@/components/resonator-summary/ResonatorCard";
+import Button from "@/components/common/Button";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+
+const resonators: ResonatorSummary[] = [
   {
-    userResonatorId: 1,
+    userResonatorId: null,
     resonatorName: "양양",
     rarity: 4,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#9d6bb9",
+    thumbnailImageUrl: "/images/thumbnails/양양-thumbnail.png",
   },
   {
     userResonatorId: 2,
-    resonatorName: "연무",
+    resonatorName: "복링",
     rarity: 4,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#9d6bb9",
+    thumbnailImageUrl: "/images/thumbnails/복링-thumbnail.png",
   },
   {
     userResonatorId: 3,
-    resonatorName: "수수",
+    resonatorName: "린네",
     rarity: 5,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#FFF691",
+    thumbnailImageUrl: "/images/thumbnails/린네-thumbnail.png",
   },
   {
     userResonatorId: 4,
     resonatorName: "구원",
     rarity: 5,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#FFF691",
+    thumbnailImageUrl: "/images/thumbnails/구원-thumbnail.png",
   },
   {
     userResonatorId: 5,
     resonatorName: "갈브레나",
     rarity: 5,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#FFF691",
+    thumbnailImageUrl: "/images/thumbnails/갈브레나-thumbnail.png",
   },
   {
     userResonatorId: 6,
     resonatorName: "카카루",
     rarity: 5,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#FFF691",
+    thumbnailImageUrl: "/images/thumbnails/카카루-thumbnail.png",
   },
   {
     userResonatorId: 7,
     resonatorName: "방랑자",
     rarity: 5,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#FFF691",
+    thumbnailImageUrl: "/images/thumbnails/방랑자-thumbnail.png",
   },
   {
-    userResonatorId: 8,
+    userResonatorId: null,
     resonatorName: "감심",
     rarity: 5,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#FFF691",
+    thumbnailImageUrl: "/images/thumbnails/감심-thumbnail.png",
   },
   {
     userResonatorId: null,
     resonatorName: "설지",
     rarity: 4,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#9d6bb9",
+    thumbnailImageUrl: "/images/thumbnails/설지-thumbnail.png",
   },
   {
     userResonatorId: 10,
     resonatorName: "유노",
     rarity: 5,
 		releaseVersion: 101,
-    thumbnailImageUrl: "/images/thumbnails/설지.png",
-    borderColor: "#FFF691",
+    thumbnailImageUrl: "/images/thumbnails/유노-thumbnail.png",
   },
 ];
 
 export default function Page() {
+  // 페이지 이동을 위한 Next.js Router
+  const router = useRouter();
+
+
   return (
-    <main className="min-h-screen bg-[#2a2c32] px-4 py-10">
+    <main className="min-h-screen px-4 py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
         {/* 헤더 */}
         <header className="mb-10">
-          <h1 className="text-2xl font-bold text-white">
+          <h1 className="text-2xl font-bold">
             WaveSync
           </h1>
         </header>
+
+        <div className="mt-8 mb-8 flex items-center justify-end gap-8">
+          {/* 삭제 버튼 */}
+          <button
+            type="button"
+            aria-label="삭제"
+            // onClick={}
+            className="flex cursor-pointer"
+          >
+            <Image
+              src="/trash-bin.svg"
+              alt="삭제"
+              width={38}
+              height={38}
+            />
+          </button>
+
+          {/* 업로드 페이지로 이동 버튼 */}
+          <Button
+            type="button"
+            onClick={() => router.push("/upload")}
+            className="px-8"
+          >
+            공명자 정보 가져오기
+          </Button>
+        </div>
 
         {/* 카드 그리드 */}
         <ResonatorGrid resonators={resonators} />

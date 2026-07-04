@@ -1,7 +1,7 @@
-import ResonatorCard, { Resonator } from "./ResonatorCard";
+import ResonatorCard, { ResonatorSummary } from "./ResonatorCard";
 
 type Props = {
-  resonators: Resonator[];
+  resonators: ResonatorSummary[];
 };
 
 export default function ResonatorGrid({ resonators }: Props) {
