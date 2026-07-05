@@ -11,7 +11,7 @@ const resonator = {
   userResonatorId: 4,
   resonatorName: "갈브레나",
   element: "fusion",
-  standingImageUrl: "/images/standings/구원-standing.png",
+  standingImageUrl: "/images/standings/갈브레나-standing.png",
   resonanceChainLevel: 4,
   weapon: {
     name: "푸른 의지",
@@ -56,7 +56,8 @@ export default function Page() {
 
         <div
           className="relative grid grid-cols-1
-            lg:h-full lg:grid-cols-[96px_minmax(350px,390px)_max-content_470px]"
+            lg:h-full lg:grid-cols-[96px_minmax(350px,390px)_max-content_470px]
+            2xl:grid-cols-[96px_minmax(390px,420px)_minmax(850px,max-content)_470px]"
         >
           {/* 데스크탑 Sidebar */}
           <div className="hidden lg:block">

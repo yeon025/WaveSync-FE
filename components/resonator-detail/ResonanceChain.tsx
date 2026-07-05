@@ -30,7 +30,7 @@ export default function ResonanceChain({
       <div className="mx-auto w-[240px]">
         <svg
           viewBox="-40 -40 250 600"
-          className="w-auto h-[450px]"
+          className="w-auto h-[450px] 2xl:h-[600px]"
         >
           {/* 연결선 */}
           <path

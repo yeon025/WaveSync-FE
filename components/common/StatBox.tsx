@@ -29,11 +29,11 @@ export default function StatBox({
         ${className}
       `}
     >
-      <span className="text-sm sm:text-base">
+      <span className="text-sm sm:text-base 2xl:text-lg">
         {label}
       </span>
 
-      <span className="text-sm sm:text-base">
+      <span className="text-sm sm:text-base 2xl:text-lg">
         {value}
       </span>
     </div>
