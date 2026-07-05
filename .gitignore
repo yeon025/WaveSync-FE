@@ -41,4 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 public/images/thumbnails
+public/images/standings
+public/images/weapons
 package-lock.json
