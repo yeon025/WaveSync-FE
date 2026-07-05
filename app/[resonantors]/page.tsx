@@ -9,9 +9,9 @@ import DesktopSidebar from "@/components/common/DesktopSidebar";
 
 const resonator = {
   userResonatorId: 4,
-  resonatorName: "구원",
-  element: "aero",
-  standingImageUrl: "/images/standings/기염-standing.png",
+  resonatorName: "갈브레나",
+  element: "fusion",
+  standingImageUrl: "/images/standings/구원-standing.png",
   resonanceChainLevel: 4,
   weapon: {
     name: "푸른 의지",
@@ -55,14 +55,8 @@ export default function Page() {
         </div>
 
         <div
-          className="
-            relative
-            grid
-            min-h-screen
-            grid-cols-1
-            lg:h-full
-            lg:grid-cols-[96px_400px_minmax(320px,1fr)_480px]
-          "
+          className="relative grid grid-cols-1
+            lg:h-full lg:grid-cols-[96px_minmax(350px,390px)_max-content_470px]"
         >
           {/* 데스크탑 Sidebar */}
           <div className="hidden lg:block">
@@ -70,56 +64,34 @@ export default function Page() {
           </div>
 
           {/* 좌측 정보 */}
-          <div className="
-            order-2
-            flex
-            justify-center
-            px-4
-            pt-8
-            lg:justify-start
-            lg:pl-8
-            lg:pt-16
-          ">
+          <div 
+            className="order-2 min-w-0 flex justify-center px-4 pt-8
+              lg:pl-8 lg:pt-16"
+          >
             <ResonatorInfo resonator={resonator} />
           </div>
 
           {/* 중앙 캐릭터 */}
-          <div className="
-            relative
-            order-1
-            flex
-            justify-center
-            lg:order-2
-            lg:-translate-y-10
-          ">
+          <div 
+            className="relative order-1 flex justify-center
+              lg:order-2 lg:-translate-y-10"
+          >
             <Image
               src={resonator.standingImageUrl}
               alt={resonator.resonatorName}
               width={718}
               height={1026}
               priority
-              className="
-                pointer-events-none
-                h-[60vh]
-                w-auto
-                select-none
-                sm:h-[70vh]
-                lg:h-[1026px]
-              "
+              className="pointer-events-none h-[60vh] w-auto select-none
+                sm:h-[70vh] lg:h-[90vh] lg:translate-y-14 lg:translate-x-2"
             />
           </div>
 
           {/* 우측 */}
-          <div className="
-            order-3
-            flex
-            flex-col
-            gap-8
-            px-8
-            lg:pl-0
-            lg:pr-16
-            pt-16
-          ">
+          <div
+            className="order-3 flex flex-col gap-8 px-8 pt-16
+              lg:pl-0 lg:pr-16"
+          >
             <WeaponCard weapon={resonator.weapon} />
 
             <div className="hidden lg:block">

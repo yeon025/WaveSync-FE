@@ -42,7 +42,7 @@ export default function ResonatorInfo({ resonator }: ResonatorInfoProps) {
       aria-label="캐릭터 개요"
       className="w-full"
     >
-      <header className="flex flex-col gap-2">
+      <header className="flex flex-col gap-0">
         <div className="flex items-start justify-between gap-4">
           <Image
             src={`/images/elements/${resonator.element}.png`}
@@ -58,24 +58,17 @@ export default function ResonatorInfo({ resonator }: ResonatorInfoProps) {
             "
           />
 
-          <h2
-            className="
-              text-right
-              text-3xl
-              leading-tight
-              lg:text-[40px]
-            "
-          >
+          <h2 className="self-center text-right text-3xl lg:text-4xl">
             {resonator.resonatorName}
           </h2>
         </div>
 
         <p className="ml-1 lg:ml-4">
-          <span className="text-xl font-medium lg:text-2xl">
+          <span className="text-xl font-medium">
             Lv. 90 
           </span>
 
-          <span className="text-base lg:text-xl">
+          <span className="text-base">
             {" "}
             / 90
           </span>
@@ -83,11 +76,13 @@ export default function ResonatorInfo({ resonator }: ResonatorInfoProps) {
       </header>
 
       {/* 구분선 */}
-      <div className="my-4 border-t-2 border-[#848484]" />
+      <div className="my-2 border-t-2 border-[#848484]" />
 
       {/* 스탯 */}
       <div className="flex flex-col gap-1">
-        {Object.entries(resonator.stat).map(([key, value]) => (
+        {Object.entries(resonator.stat)
+        .filter(([, value]) => value !== 0)
+        .map(([key, value]) => (
           <StatBox
             key={key}
             label={statLabels[key]}

@@ -41,9 +41,9 @@ export default function WeaponCard({
   return (
     <section
       aria-label="무기 정보"
-      className="w-full max-w-[480px]"
+      className="w-full"
     >
-      <div className="flex gap-5">
+      <div className="flex justify-center gap-5">
         {/* 무기 이미지 */}
         <div className="shrink-0">
           <Image
@@ -55,8 +55,8 @@ export default function WeaponCard({
               h-[110px]
               w-[110px]
               object-contain
-              lg:h-[150px]
-              lg:w-[150px]
+              lg:h-[135px]
+              lg:w-[135px]
             "
           />
         </div>
@@ -64,7 +64,7 @@ export default function WeaponCard({
         {/* 우측 정보 */}
         <div className="flex flex-1 flex-col">
           {/* 이름 */}
-          <h2 className="text-xl leading-tight lg:text-2xl">
+          <h2 className="text-xl">
             {weapon.name}
           </h2>
 
@@ -99,7 +99,7 @@ export default function WeaponCard({
           </div>
 
           {/* 스탯 */}
-          <div className="mt-4 flex flex-col gap-2">
+          <div className="mt-1 flex flex-col gap-1">
             <StatBox
               label="공격력"
               value={weapon.attackValue}
