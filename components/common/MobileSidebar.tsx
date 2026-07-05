@@ -35,7 +35,7 @@ export default function MobileSidebar({ active }: SidebarProps) {
     >
       {/* 로고 */}
       <div className="flex justify-center pt-6">
-        <div className="flex flex-col items-center">
+        <div className="flex items-center gap-3">
           <Image
             src="/images/wavesync-logo.png"
             alt="WaveSync 로고"
@@ -44,7 +44,7 @@ export default function MobileSidebar({ active }: SidebarProps) {
             className="h-20 w-20 object-contain"
           />
 
-          <div className="mt-2 flex text-2xl font-semibold tracking-[0.22px]">
+          <div className="flex text-2xl font-semibold tracking-[0.22px]">
             <span className="text-white">Wave</span>
             <span className="bg-gradient-to-r from-[#5b7cff] to-[#69e3ff] bg-clip-text text-transparent">
               Sync
