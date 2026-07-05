@@ -52,8 +52,8 @@ export default function ResonanceChain({
               key={index}
               href={
                 index < level
-                  ? "star-node.svg"
-                  : "star-node-deactive.svg"
+                  ? "/star-node.svg"
+                  : "/star-node-deactive.svg"
               }
               x={point.x - 40}
               y={point.y - 40}

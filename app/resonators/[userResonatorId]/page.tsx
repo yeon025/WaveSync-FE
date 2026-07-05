@@ -1,50 +1,93 @@
 import Image from "next/image";
 
 import ResonatorInfo from "@/components/resonator-detail/ResonatorInfo";
+import { Stat } from "@/components/resonator-detail/ResonatorInfo";
 import WeaponCard from "@/components/resonator-detail/WeaponCard";
 import ResonanceChain from "@/components/resonator-detail/ResonanceChain";
 import MobileResonanceChain from "@/components/resonator-detail/MobileResonanceChain";
 import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
 
-const resonator = {
-  userResonatorId: 4,
-  resonatorName: "갈브레나",
-  element: "fusion",
-  standingImageUrl: "/images/standings/갈브레나-standing.png",
-  resonanceChainLevel: 4,
-  weapon: {
-    name: "푸른 의지",
-    attackValue: 587,
-    main: {
-      type: "critical_rate",
-      value: 24.3,
-    },
-    refineLevel: 1,
-    imageUrl: "/images/weapons/푸른 의지.png",
-  },
-  stat: {
-    hp: 12354,
-    attack: 154,
-    defense: 124,
-    energyRegen: 110,
-    criticalRate: 70,
-    criticalDamage: 305,
-    resonanceSkillDamageBonus: 50,
-    basicAttackDamageBonus: 12,
-    heavyAttackDamageBonus: 10,
-    resonanceLiberationDamageBonus: 10,
-    glacioDamageBonus: 70,
-    fusionDamageBonus: 0,
-    conductoDamageBonus: 0,
-    aeroDamageBonus: 0,
-    spectraDamageBonus: 0,
-    havocDamageBonus: 0,
-    healingBonus: 0,
-  },
-};
+interface Weapon {
+  name: string;
+  attackValue: number;
+  main: {
+    type: string;
+    value: number;
+  };
+  refineLevel: number;
+  imageUrl: string;
+}
 
-export default function Page() {
+interface Resonator {
+  userResonatorId: number;
+  resonatorName: string;
+  element: string;
+  standingImageUrl: string;
+  resonanceChainLevel: number;
+  weapon: Weapon;
+  stat: Stat;
+}
+
+const resonators: Resonator[] = [
+  {
+    userResonatorId: 4,
+    resonatorName: "갈브레나",
+    element: "fusion",
+    standingImageUrl: "/images/standings/갈브레나-standing.png",
+    resonanceChainLevel: 4,
+    weapon: {
+      name: "푸른 의지",
+      attackValue: 587,
+      main: {
+        type: "critical_rate",
+        value: 24.3,
+      },
+      refineLevel: 1,
+      imageUrl: "/images/weapons/푸른 의지.png",
+    },
+    stat: {
+      hp: 12354,
+      attack: 154,
+      defense: 124,
+      energyRegen: 110,
+      criticalRate: 70,
+      criticalDamage: 305,
+      resonanceSkillDamageBonus: 50,
+      basicAttackDamageBonus: 12,
+      heavyAttackDamageBonus: 10,
+      resonanceLiberationDamageBonus: 10,
+      glacioDamageBonus: 70,
+      fusionDamageBonus: 0,
+      conductoDamageBonus: 0,
+      aeroDamageBonus: 0,
+      spectraDamageBonus: 0,
+      havocDamageBonus: 0,
+      healingBonus: 0,
+    },
+  },
+];
+
+interface PageProps {
+  params: Promise<{
+    userResonatorId: string;
+  }>;
+}
+
+export default async function Page({ params }: PageProps) {
+  const { userResonatorId } = await params;
+
+  const resonator = resonators.find(
+    (r) => r.userResonatorId === Number(userResonatorId)
+  );
+
+  if (!resonator) {
+    console.log(params);
+    console.log(userResonatorId);
+    console.log(resonator);
+    return <div>존재하지 않는 공명자입니다.</div>;
+  }
+
   return (
     <main className="relative min-h-screen overflow-x-hidden lg:overflow-hidden">
       <div className="mx-auto min-h-screen max-w-[1920px] lg:h-screen lg:overflow-hidden">
