@@ -35,65 +35,85 @@ const statLabels: Record<string, string> = {
   healing_bonus: "치료 효과 보너스",
 };
 
-export default function WeaponCard({ weapon }: WeaponCardProps) {
+export default function WeaponCard({
+  weapon,
+}: WeaponCardProps) {
   return (
     <section
       aria-label="무기 정보"
-      className="absolute left-[1350px] top-20 w-120"
+      className="w-full max-w-[480px]"
     >
-      {/* 무기 이미지 */}
-      <Image
-        src={weapon.imageUrl}
-        alt={`${weapon.name} 무기 이미지`}
-        width={150}
-        height={150}
-        className="absolute left-0 top-1"
-      />
-
-      {/* 무기 이름 */}
-      <header className="absolute left-44 top-0">
-        <h2 className="text-2xl">
-          {weapon.name}
-        </h2>
-      </header>
-
-      {/* 레벨 */}
-      <div className="absolute left-44 top-10">
-        <p>
-          <span className="text-xl font-medium">Lv. 90</span>
-          <span className="text-base"> / 90</span>
-        </p>
-      </div>
-
-      {/* 재련 단계 */}
-      <div className="absolute left-[300px] top-10 flex">
-        {Array.from({ length: 5 }).map((_, index) => (
+      <div className="flex gap-5">
+        {/* 무기 이미지 */}
+        <div className="shrink-0">
           <Image
-            key={index}
-            src="/images/star-node.png"
-            alt={`재련 단계 ${index + 1}`}
-            width={30}
-            height={30}
-            className={
-              index < weapon.refineLevel
-                ? ""
-                : "grayscale brightness-75"
-            }
+            src={weapon.imageUrl}
+            alt={`${weapon.name} 무기 이미지`}
+            width={150}
+            height={150}
+            className="
+              h-[110px]
+              w-[110px]
+              object-contain
+              lg:h-[150px]
+              lg:w-[150px]
+            "
           />
-        ))}
-      </div>
+        </div>
 
-      {/* 스탯 */}
-      <div className="absolute left-[170px] top-20 flex w-[290px] flex-col gap-1">
-        <StatBox
-          label="공격력"
-          value={weapon.attackValue}
-        />
+        {/* 우측 정보 */}
+        <div className="flex flex-1 flex-col">
+          {/* 이름 */}
+          <h2 className="text-xl leading-tight lg:text-2xl">
+            {weapon.name}
+          </h2>
 
-        <StatBox
-          label={statLabels[weapon.main.type] ?? weapon.main.type}
-          value={`${weapon.main.value}%`}
-        />
+          {/* 레벨 + 재련 */}
+          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p>
+              <span className="text-lg font-medium lg:text-xl">
+                Lv. 90
+              </span>
+              <span className="text-sm lg:text-base">
+                {" "}
+                / 90
+              </span>
+            </p>
+
+            <div className="flex">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Image
+                  key={index}
+                  src="/images/star-node.png"
+                  alt={`재련 단계 ${index + 1}`}
+                  width={28}
+                  height={28}
+                  className={`${
+                    index < weapon.refineLevel
+                      ? ""
+                      : "grayscale brightness-75"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* 스탯 */}
+          <div className="mt-4 flex flex-col gap-2">
+            <StatBox
+              label="공격력"
+              value={weapon.attackValue}
+            />
+
+            <StatBox
+              label={
+                statLabels[weapon.main.type] ??
+                weapon.main.type
+              }
+              value={`${weapon.main.value}%`}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

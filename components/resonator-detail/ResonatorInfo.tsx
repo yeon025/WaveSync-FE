@@ -40,41 +40,60 @@ export default function ResonatorInfo({ resonator }: ResonatorInfoProps) {
   return (
     <section
       aria-label="캐릭터 개요"
-      className="absolute left-40 top-16 flex w-[370px] flex-col gap-2"
+      className="w-full"
     >
-      <header className="flex flex-col">
-        <div className="flex items-start justify-between">
+      <header className="flex flex-col gap-2">
+        <div className="flex items-start justify-between gap-4">
           <Image
             src={`/images/elements/${resonator.element}.png`}
             alt={resonator.element}
             width={60}
             height={60}
+            className="
+              h-12
+              w-12
+              shrink-0
+              lg:h-[60px]
+              lg:w-[60px]
+            "
           />
 
-          <h2 className="text-[40px]">
+          <h2
+            className="
+              text-right
+              text-3xl
+              leading-tight
+              lg:text-[40px]
+            "
+          >
             {resonator.resonatorName}
           </h2>
         </div>
 
-        <p className="ml-4">
-          <span className="text-2xl font-medium">Lv. 90</span>
-          <span className="text-xl"> / 90</span>
+        <p className="ml-1 lg:ml-4">
+          <span className="text-xl font-medium lg:text-2xl">
+            Lv. 90 
+          </span>
+
+          <span className="text-base lg:text-xl">
+            {" "}
+            / 90
+          </span>
         </p>
       </header>
 
       {/* 구분선 */}
-      <div className="mb-2 border-t-2 border-[#848484]" />
+      <div className="my-4 border-t-2 border-[#848484]" />
 
       {/* 스탯 */}
-      <div className="ml-px flex flex-col gap-1">
+      <div className="flex flex-col gap-1">
         {Object.entries(resonator.stat).map(([key, value]) => (
           <StatBox
             key={key}
             label={statLabels[key]}
             value={
               key === "hp" || key === "attack" || key === "defense"
-                ? value
-                : `${value} %`
+                ? value : `${value} %`
             }
           />
         ))}

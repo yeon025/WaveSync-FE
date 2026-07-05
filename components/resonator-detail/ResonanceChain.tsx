@@ -19,9 +19,9 @@ export default function ResonanceChain({
   return (
     <section
       aria-labelledby="resonance-chain-title"
-      className="absolute left-[1300px] top-[300px]"
+      className="w-full max-w-[240px]"
     >
-      <div className="relative h-[560px] w-[240px]">
+      <div className="relative mx-auto h-[560px] w-[240px]">
         {/* 연결선 */}
         <svg
           width="200"
@@ -55,15 +55,25 @@ export default function ResonanceChain({
               top: position.top,
               transform: "translate(-50%, -50%)",
             }}
-            className={`absolute ${
-              index < level ? "" : "grayscale brightness-60"
+            className={`absolute transition-all ${
+              index < level
+                ? ""
+                : "grayscale brightness-60"
             }`}
           />
         ))}
 
         <h2
           id="resonance-chain-title"
-          className="absolute left-15 top-65 text-2xl"
+          className="
+            absolute
+            left-1/2
+            top-1/2
+            -translate-x-1/2
+            -translate-y-1/2
+            whitespace-nowrap
+            text-2xl
+          "
         >
           공명 체인
         </h2>
