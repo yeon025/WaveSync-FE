@@ -1,33 +1,12 @@
 import Image from "next/image";
 
-import ResonatorInfo from "@/components/resonator-detail/ResonatorInfo";
-import { Stat } from "@/components/resonator-detail/ResonatorInfo";
+import ResonatorInfo from "@/components/resonator-detail/ResonatorInfo";;
 import WeaponCard from "@/components/resonator-detail/WeaponCard";
 import ResonanceChain from "@/components/resonator-detail/ResonanceChain";
 import MobileResonanceChain from "@/components/resonator-detail/MobileResonanceChain";
 import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
 
-interface Weapon {
-  name: string;
-  attackValue: number;
-  main: {
-    type: string;
-    value: number;
-  };
-  refineLevel: number;
-  imageUrl: string;
-}
-
-interface Resonator {
-  userResonatorId: number;
-  resonatorName: string;
-  element: string;
-  standingImageUrl: string;
-  resonanceChainLevel: number;
-  weapon: Weapon;
-  stat: Stat;
-}
 
 const resonators: Resonator[] = [
   {
@@ -68,13 +47,13 @@ const resonators: Resonator[] = [
   },
 ];
 
-interface PageProps {
+interface Props {
   params: Promise<{
     userResonatorId: string;
   }>;
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: Props) {
   const { userResonatorId } = await params;
 
   const resonator = resonators.find(

@@ -1,10 +1,10 @@
-import ResonatorCard, { ResonatorSummary } from "./ResonatorCard";
+import ResonatorCard from "./ResonatorCard";
 
-type ResonatorSummaryProps = {
+interface Props {
   resonators: ResonatorSummary[];
 };
 
-export default function ResonatorGrid({ resonators }: ResonatorSummaryProps) {
+export default function ResonatorGrid({ resonators }: Props) {
   return (
     <section className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-10">
       {resonators.map((item) => (

@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-interface MobileResonanceChainProps {
+interface Props {
   level: number;
 }
 
 export default function MobileResonanceChain({
   level,
-}: MobileResonanceChainProps) {
+}: Props) {
   return (
     <section
       aria-labelledby="mobile-resonance-chain-title"

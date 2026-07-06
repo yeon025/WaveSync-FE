@@ -1,4 +1,4 @@
-interface StatBoxProps {
+interface Props {
   label: string;
   value: string | number;
   className?: string;
@@ -8,7 +8,7 @@ export default function StatBox({
   label,
   value,
   className = "",
-}: StatBoxProps) {
+}: Props) {
   return (
     <div
       className={`

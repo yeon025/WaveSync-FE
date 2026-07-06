@@ -1,19 +1,9 @@
 import Image from "next/image";
 import StatBox from "@/components/common/StatBox";
 
-
-interface WeaponCardProps {
-  weapon: {
-    name: string;
-    attackValue: number;
-    refineLevel: number;
-    imageUrl: string;
-    main: {
-      type: string;
-      value: number;
-    };
-  };
-}
+interface Props {
+  weapon: Weapon;
+};
 
 const statLabels: Record<string, string> = {
   hp: "HP",
@@ -37,7 +27,7 @@ const statLabels: Record<string, string> = {
 
 export default function WeaponCard({
   weapon,
-}: WeaponCardProps) {
+}: Props) {
   return (
     <section
       aria-label="무기 정보"

@@ -1,20 +1,13 @@
 import Image from "next/image";
 
-export type ResonatorSummary = {
-  userResonatorId: number | null;
-  resonatorName: string;
-  rarity: number;
-  releaseVersion: number;
-  thumbnailImageUrl: string;
-};
 
-type ResonatorSummaryProps = {
+interface Props {
   resonator: ResonatorSummary;
   className?: string;
   onClick?: () => void;
 };
 
-export default function ResonatorCard({resonator, className = "", onClick,}: ResonatorSummaryProps) {
+export default function ResonatorCard({resonator, className = "", onClick,}: Props) {
   return (
     <article
       onClick={onClick}

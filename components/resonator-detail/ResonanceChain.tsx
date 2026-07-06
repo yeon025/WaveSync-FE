@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface ResonanceChainProps {
+interface Props {
   level: number;
 }
 
 export default function ResonanceChain({
   level,
-}: ResonanceChainProps) {
+}: Props) {
   const pathRef = useRef<SVGPathElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
 
@@ -52,7 +52,7 @@ export default function ResonanceChain({
               key={index}
               href={
                 index < level
-                  ? "/star-node.svg"
+                  ? "/star-node-active.svg"
                   : "/star-node-deactive.svg"
               }
               x={point.x - 40}

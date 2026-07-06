@@ -1,6 +1,7 @@
 import Image from "next/image";
+import WaveSyncLogo from "./Logo";
 
-interface SidebarProps {
+interface Props {
   active: "resonator-info" | "resonator-setting";
 }
 
@@ -23,7 +24,7 @@ const navigationItems = [
   },
 ] as const;
 
-export default function MobileSidebar({ active }: SidebarProps) {
+export default function MobileSidebar({ active }: Props) {
   return (
     <aside
       aria-label="사이드바 내비게이션"
@@ -35,22 +36,11 @@ export default function MobileSidebar({ active }: SidebarProps) {
     >
       {/* 로고 */}
       <div className="flex justify-center pt-6">
-        <div className="flex items-center gap-3">
-          <Image
-            src="/images/wavesync-logo.png"
-            alt="WaveSync 로고"
-            width={100}
-            height={100}
-            className="h-20 w-20 object-contain"
-          />
-
-          <div className="flex text-2xl font-semibold tracking-[0.22px]">
-            <span className="text-white">Wave</span>
-            <span className="bg-gradient-to-r from-[#5b7cff] to-[#69e3ff] bg-clip-text text-transparent">
-              Sync
-            </span>
-          </div>
-        </div>
+        <WaveSyncLogo
+          textSizeClass="text-2xl"
+          direction="row"
+          imageSize={20}
+        />
       </div>
 
       {/* 메뉴 */}

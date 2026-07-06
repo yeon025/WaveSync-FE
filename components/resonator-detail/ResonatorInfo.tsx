@@ -1,43 +1,14 @@
 import Image from "next/image";
 import StatBox from "@/components/common/StatBox";
 
-interface ResonatorInfoProps {
+interface Props {
   resonator: {
     resonatorName: string;
     element: string;
-    stat: {
-      hp: number;
-      attack: number;
-      defense: number;
-      energyRegen: number;
-      criticalRate: number;
-      criticalDamage: number;
-    };
+    stat: Stat;
   };
 }
 
-export interface Stat {
-  hp: number;
-  attack: number;
-  defense: number;
-  energyRegen: number;
-  criticalRate: number;
-  criticalDamage: number;
-
-  resonanceSkillDamageBonus: number;
-  basicAttackDamageBonus: number;
-  heavyAttackDamageBonus: number;
-  resonanceLiberationDamageBonus: number;
-
-  glacioDamageBonus: number;
-  fusionDamageBonus: number;
-  conductoDamageBonus: number;
-  aeroDamageBonus: number;
-  spectraDamageBonus: number;
-  havocDamageBonus: number;
-
-  healingBonus: number;
-}
 
 const statLabels: Record<string, string> = {
   hp: "HP",
@@ -59,7 +30,7 @@ const statLabels: Record<string, string> = {
   healingBonus: "치료 효과 보너스",
 };
 
-export default function ResonatorInfo({ resonator }: ResonatorInfoProps) {
+export default function ResonatorInfo({ resonator }: Props) {
   return (
     <section
       aria-label="캐릭터 개요"
@@ -75,7 +46,6 @@ export default function ResonatorInfo({ resonator }: ResonatorInfoProps) {
             className="
               h-12
               w-12
-              shrink-0
               lg:h-[60px]
               lg:w-[60px]
             "

@@ -1,7 +1,6 @@
 "use client";
-
+import WaveSyncLogo from "@/components/common/Logo";
 import ResonatorGrid from "@/components/resonator-summary/ResonatorGrid";
-import { ResonatorSummary } from "@/components/resonator-summary/ResonatorCard";
 import Button from "@/components/common/Button";
 import { useRouter } from "next/navigation";
 import IconButton from "@/components/common/IconButton";
@@ -91,9 +90,12 @@ export default function Page() {
 
         {/* 헤더 */}
         <header className="mb-10">
-          <h1 className="text-2xl font-bold">
-            WaveSync
-          </h1>
+          {/* 로고 */}
+          <WaveSyncLogo
+            imageSize={25}
+            direction="row"
+            textSizeClass="text-4xl"
+          />
         </header>
 
         <div className="mt-8 mb-8 flex items-center justify-end gap-8">

@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
@@ -8,7 +8,7 @@ export default function Button({
   children,
   className = "",
   ...props
-}: ButtonProps) {
+}: Props) {
   return (
     <button
       className={`

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-interface IconButtonProps {
+interface Props {
   icon: string;
   alt: string;
   size: number;
@@ -14,7 +14,7 @@ export default function IconButton({
   size,
   onClick,
   className = "",
-}: IconButtonProps) {
+}: Props) {
   return (
     <button
       type="button"
