@@ -27,6 +27,7 @@ export default function WaveSyncLogo({
         alt="WaveSync 로고"
         width={100}
         height={100}
+        priority
         className={`h-${imageSize} w-${imageSize} object-contain`}
       />
 

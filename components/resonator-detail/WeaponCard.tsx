@@ -2,7 +2,16 @@ import Image from "next/image";
 import StatBox from "@/components/common/StatBox";
 
 interface Props {
-  weapon: Weapon;
+  weapon: {
+    name: string;
+    attackValue: number;
+    main: {
+      type: string;
+      value: number;
+    };
+    refineLevel: number;
+    imageUrl: string;
+  };
 };
 
 const statLabels: Record<string, string> = {
