@@ -86,21 +86,6 @@ export default function MobileSidebar({ active }: Props) {
               >
                 {item.label}
               </span>
-
-              {isActive && (
-                <div
-                  className="
-                    absolute
-                    top-0
-                    left-1/2
-                    h-[3px]
-                    w-10
-                    -translate-x-1/2
-                    rounded-b-full
-                    bg-[#d6b15c]
-                  "
-                />
-              )}
             </button>
           );
         })}

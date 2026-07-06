@@ -23,15 +23,14 @@ export default function MobileResonanceChain({
         {Array.from({ length: 6 }).map((_, index) => (
           <Image
             key={index}
-            src="/images/star-node.png"
+            src={
+              index < level
+                ? "/star-node-active.svg"
+                : "/star-node-deactive.svg"
+            }
             alt={`공명 체인 ${index + 1}`}
             width={56}
             height={56}
-            className={
-              index < level
-                ? ""
-                : "grayscale brightness-60"
-            }
           />
         ))}
       </div>

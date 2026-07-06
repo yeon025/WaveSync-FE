@@ -74,15 +74,14 @@ export default function WeaponCard({
               {Array.from({ length: 5 }).map((_, index) => (
                 <Image
                   key={index}
-                  src="/images/star-node.png"
-                  alt={`재련 단계 ${index + 1}`}
+                  src={
+                    index < weapon.refineLevel
+                      ? "/star-node-active.svg"
+                      : "/star-node-deactive.svg"
+                  }
+                  alt={`공명 체인 ${index + 1}`}
                   width={28}
                   height={28}
-                  className={`${
-                    index < weapon.refineLevel
-                      ? ""
-                      : "grayscale brightness-75"
-                  }`}
                 />
               ))}
             </div>
