@@ -8,7 +8,7 @@ import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
 
 
-const resonators: Resonator[] = [
+const resonators: ResonatorDetailResponse[] = [
   {
     userResonatorId: 4,
     resonatorName: "갈브레나",

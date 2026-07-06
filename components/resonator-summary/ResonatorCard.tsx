@@ -2,7 +2,7 @@ import Image from "next/image";
 
 
 interface Props {
-  resonator: ResonatorSummary;
+  resonator: ResonatorSummaryResponse;
   className?: string;
   onClick?: () => void;
 };

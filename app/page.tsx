@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import IconButton from "@/components/common/IconButton";
 
 
-const resonators: ResonatorSummary[] = [
+const resonators: ResonatorSummaryResponse[] = [
   {
     userResonatorId: null,
     resonatorName: "양양",

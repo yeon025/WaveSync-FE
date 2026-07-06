@@ -1,4 +1,4 @@
-interface ResonatorSummary {
+interface ResonatorSummaryResponse {
   userResonatorId: number | null;
   resonatorName: string;
   rarity: number;
