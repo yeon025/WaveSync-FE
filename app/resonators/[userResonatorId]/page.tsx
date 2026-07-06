@@ -8,44 +8,42 @@ import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
 
 
-const resonators: ResonatorDetailResponse[] = [
-  {
-    userResonatorId: 4,
-    resonatorName: "갈브레나",
-    element: "fusion",
-    standingImageUrl: "/images/standings/갈브레나-standing.png",
-    resonanceChainLevel: 4,
-    weapon: {
-      name: "푸른 의지",
-      attackValue: 587,
-      main: {
-        type: "critical_rate",
-        value: 24.3,
-      },
-      refineLevel: 1,
-      imageUrl: "/images/weapons/푸른 의지.png",
+const resonatorDetail: ResonatorDetailResponse = {
+  userResonatorId: 4,
+  resonatorName: "갈브레나",
+  element: "fusion",
+  standingImageUrl: "/images/standings/갈브레나-standing.png",
+  resonanceChainLevel: 4,
+  weapon: {
+    name: "푸른 의지",
+    attackValue: 587,
+    main: {
+      type: "critical_rate",
+      value: 24.3,
     },
-    stat: {
-      hp: 12354,
-      attack: 154,
-      defense: 124,
-      energyRegen: 110,
-      criticalRate: 70,
-      criticalDamage: 305,
-      resonanceSkillDamageBonus: 50,
-      basicAttackDamageBonus: 12,
-      heavyAttackDamageBonus: 10,
-      resonanceLiberationDamageBonus: 10,
-      glacioDamageBonus: 70,
-      fusionDamageBonus: 0,
-      conductoDamageBonus: 0,
-      aeroDamageBonus: 0,
-      spectraDamageBonus: 0,
-      havocDamageBonus: 0,
-      healingBonus: 0,
-    },
+    refineLevel: 1,
+    imageUrl: "/images/weapons/푸른 의지.png",
   },
-];
+  stat: {
+    hp: 12354,
+    attack: 154,
+    defense: 124,
+    energyRegen: 110,
+    criticalRate: 70,
+    criticalDamage: 305,
+    resonanceSkillDamageBonus: 50,
+    basicAttackDamageBonus: 12,
+    heavyAttackDamageBonus: 10,
+    resonanceLiberationDamageBonus: 10,
+    glacioDamageBonus: 70,
+    fusionDamageBonus: 0,
+    conductoDamageBonus: 0,
+    aeroDamageBonus: 0,
+    spectraDamageBonus: 0,
+    havocDamageBonus: 0,
+    healingBonus: 0,
+  },
+};
 
 interface Props {
   params: Promise<{
@@ -56,16 +54,6 @@ interface Props {
 export default async function Page({ params }: Props) {
   const { userResonatorId } = await params;
 
-  const resonator = resonators.find(
-    (r) => r.userResonatorId === Number(userResonatorId)
-  );
-
-  if (!resonator) {
-    console.log(params);
-    console.log(userResonatorId);
-    console.log(resonator);
-    return <div>존재하지 않는 공명자입니다.</div>;
-  }
 
   return (
     <main className="relative min-h-screen overflow-x-hidden lg:overflow-hidden">
@@ -73,7 +61,7 @@ export default async function Page({ params }: Props) {
 
         {/* 모바일 Sidebar */}
         <div className="lg:hidden">
-          <MobileSidebar active="resonator-info" />
+          <MobileSidebar active="resonator-info" userResonatorId={userResonatorId}/>
         </div>
 
         <div
@@ -83,7 +71,7 @@ export default async function Page({ params }: Props) {
         >
           {/* 데스크탑 Sidebar */}
           <div className="hidden lg:block">
-            <DesktopSidebar active="resonator-info" />
+            <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
           </div>
 
           {/* 좌측 정보 */}
@@ -91,7 +79,7 @@ export default async function Page({ params }: Props) {
             className="order-2 min-w-0 flex justify-center px-4 pt-8
               lg:pl-8 lg:pt-16"
           >
-            <ResonatorInfo resonator={resonator} />
+            <ResonatorInfo resonator={resonatorDetail} />
           </div>
 
           {/* 중앙 캐릭터 */}
@@ -100,8 +88,8 @@ export default async function Page({ params }: Props) {
               lg:order-2 lg:-translate-y-10"
           >
             <Image
-              src={resonator.standingImageUrl}
-              alt={resonator.resonatorName}
+              src={resonatorDetail.standingImageUrl}
+              alt={resonatorDetail.resonatorName}
               width={718}
               height={1026}
               priority
@@ -115,14 +103,14 @@ export default async function Page({ params }: Props) {
             className="order-3 flex flex-col gap-8 px-8 pt-16
               lg:pl-0 lg:pr-16"
           >
-            <WeaponCard weapon={resonator.weapon} />
+            <WeaponCard weapon={resonatorDetail.weapon} />
 
             <div className="hidden lg:block">
-              <ResonanceChain level={resonator.resonanceChainLevel} />
+              <ResonanceChain level={resonatorDetail.resonanceChainLevel} />
             </div>
 
             <div className="py-6 lg:hidden">
-              <MobileResonanceChain level={resonator.resonanceChainLevel} />
+              <MobileResonanceChain level={resonatorDetail.resonanceChainLevel} />
             </div>
           </div>
 

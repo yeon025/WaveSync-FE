@@ -105,7 +105,7 @@ export default function WeaponEditor({ weapon }: Props) {
         <div className="mt-12 flex items-center justify-center gap-6">
           <button
             onClick={decrease}
-            className="text-4xl font-bold text-white hover:text-yellow-400"
+            className="text-4xl font-bold text-white hover:text-yellow-400 cursor-pointer"
           >
             −
           </button>
@@ -128,7 +128,7 @@ export default function WeaponEditor({ weapon }: Props) {
 
           <button
             onClick={increase}
-            className="text-4xl font-bold text-white hover:text-yellow-400"
+            className="text-4xl font-bold text-white hover:text-yellow-400 cursor-pointer"
           >
             ＋
           </button>

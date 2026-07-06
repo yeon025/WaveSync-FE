@@ -1,5 +1,3 @@
-"use client";
-
 import ResonanceNodeEditor from "@/components/resonator-setting/ResonanceNodeEditor";
 import WeaponEditor from "@/components/resonator-setting/WeaponEditor";
 import MobileSidebar from "@/components/common/MobileSidebar";
@@ -11,8 +9,8 @@ const data: ResonatorSettingResponse = {
   "nodes": [
     {
         "branchPosition": "left_outer",
-        "nodePosition": "top",
-        "active": true,
+        "nodePosition": "middle",
+        "active": false,
         "stat": {
             "type": "critical_damage",
             "value": 48
@@ -20,8 +18,17 @@ const data: ResonatorSettingResponse = {
     },
     {
         "branchPosition": "left_outer",
-        "nodePosition": "middle",
+        "nodePosition": "top",
         "active": true,
+        "stat": {
+            "type": "critical_damage",
+            "value": 48
+        }
+    },
+    {
+        "branchPosition": "left_inner",
+        "nodePosition": "middle",
+        "active": false,
         "stat": {
             "type": "critical_damage",
             "value": 48
@@ -37,34 +44,16 @@ const data: ResonatorSettingResponse = {
         }
     },
     {
-        "branchPosition": "left_inner",
-        "nodePosition": "middle",
-        "active": true,
-        "stat": {
-            "type": "critical_damage",
-            "value": 48
-        }
-    },
-    {
-        "branchPosition": "center",
-        "nodePosition": "top",
-        "active": true,
-        "stat": null
-    },
-    {
         "branchPosition": "center",
         "nodePosition": "middle",
         "active": true,
         "stat": null
     },
     {
-        "branchPosition": "right_inner",
+        "branchPosition": "center",
         "nodePosition": "top",
         "active": true,
-        "stat": {
-            "type": "critical_damage",
-            "value": 48
-        }
+        "stat": null
     },
     {
         "branchPosition": "right_inner",
@@ -76,7 +65,7 @@ const data: ResonatorSettingResponse = {
         }
     },
     {
-        "branchPosition": "right_outer",
+        "branchPosition": "right_inner",
         "nodePosition": "top",
         "active": true,
         "stat": {
@@ -88,6 +77,15 @@ const data: ResonatorSettingResponse = {
         "branchPosition": "right_outer",
         "nodePosition": "middle",
         "active": true,
+        "stat": {
+            "type": "critical_damage",
+            "value": 48
+        }
+    },
+    {
+        "branchPosition": "right_outer",
+        "nodePosition": "top",
+        "active": false,
         "stat": {
             "type": "critical_damage",
             "value": 48
@@ -107,23 +105,34 @@ const data: ResonatorSettingResponse = {
 		
 };
 
-export default function Page() {
+
+interface Props {
+  params: Promise<{
+    userResonatorId: string;
+  }>;
+}
+
+export default async function Page({ params }: Props) {
+  const { userResonatorId } = await params;
+
   return (
     <main className="w-full min-h-screen relative overflow-hidden">
       {/* 모바일 Sidebar */}
       <div className="lg:hidden">
-        <MobileSidebar active="resonator-setting" />
+        <MobileSidebar active="resonator-setting" userResonatorId={userResonatorId} />
       </div>
 
       <div className="flex">
+
         <div className="hidden lg:block">
-          <DesktopSidebar active="resonator-setting" />
+          <DesktopSidebar active="resonator-setting" userResonatorId={userResonatorId} />
         </div>
 
         <div className="flex w-full justify-center items-start gap-30 py-20">
           <ResonanceNodeEditor nodes={data.nodes} />
           <WeaponEditor weapon={data.weapon} />
         </div>
+
       </div>
     </main>
   );
