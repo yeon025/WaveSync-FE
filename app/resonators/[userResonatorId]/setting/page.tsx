@@ -12,8 +12,8 @@ const data: ResonatorSettingResponse = {
         "nodePosition": "middle",
         "active": false,
         "stat": {
-            "type": "critical_damage",
-            "value": 48
+            "type": "critical_rate",
+            "value": 1.6
         }
     },
     {
@@ -21,8 +21,8 @@ const data: ResonatorSettingResponse = {
         "nodePosition": "top",
         "active": true,
         "stat": {
-            "type": "critical_damage",
-            "value": 48
+            "type": "critical_rate",
+            "value": 2.4
         }
     },
     {
@@ -30,8 +30,8 @@ const data: ResonatorSettingResponse = {
         "nodePosition": "middle",
         "active": false,
         "stat": {
-            "type": "critical_damage",
-            "value": 48
+            "type": "attack_percent",
+            "value": 3.6
         }
     },
     {
@@ -39,8 +39,8 @@ const data: ResonatorSettingResponse = {
         "nodePosition": "top",
         "active": true,
         "stat": {
-            "type": "critical_damage",
-            "value": 48
+            "type": "attack_percent",
+            "value": 6.4
         }
     },
     {
@@ -60,8 +60,8 @@ const data: ResonatorSettingResponse = {
         "nodePosition": "middle",
         "active": true,
         "stat": {
-            "type": "critical_damage",
-            "value": 48
+            "type": "attack_percent",
+            "value": 3.6
         }
     },
     {
@@ -69,8 +69,8 @@ const data: ResonatorSettingResponse = {
         "nodePosition": "top",
         "active": true,
         "stat": {
-            "type": "critical_damage",
-            "value": 48
+            "type": "attack_percent",
+            "value": 6.4
         }
     },
     {
@@ -78,8 +78,8 @@ const data: ResonatorSettingResponse = {
         "nodePosition": "middle",
         "active": true,
         "stat": {
-            "type": "critical_damage",
-            "value": 48
+            "type": "critical_rate",
+            "value": 1.6
         }
     },
     {
@@ -87,8 +87,8 @@ const data: ResonatorSettingResponse = {
         "nodePosition": "top",
         "active": false,
         "stat": {
-            "type": "critical_damage",
-            "value": 48
+            "type": "critical_rate",
+            "value": 2.4
         }
     }
   ],

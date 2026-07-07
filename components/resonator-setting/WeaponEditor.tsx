@@ -17,9 +17,9 @@ interface Props {
 }
 
 const statLabels: Record<string, string> = {
-  hp: "HP",
-  attack: "공격력",
-  defense: "방어력",
+  hp_percent: "HP",
+  attack_percent: "공격력",
+  defense_percent: "방어력",
   energy_regen: "공명 효율",
   critical_rate: "크리티컬",
   critical_damage: "크리티컬 피해",
@@ -105,7 +105,7 @@ export default function WeaponEditor({ weapon }: Props) {
         <div className="mt-12 flex items-center justify-center gap-6">
           <button
             onClick={decrease}
-            className="text-4xl font-bold text-white hover:text-yellow-400 cursor-pointer"
+            className="text-4xl font-bold hover:text-yellow-400 cursor-pointer"
           >
             −
           </button>
@@ -128,13 +128,13 @@ export default function WeaponEditor({ weapon }: Props) {
 
           <button
             onClick={increase}
-            className="text-4xl font-bold text-white hover:text-yellow-400 cursor-pointer"
+            className="text-4xl font-bold hover:text-yellow-400 cursor-pointer"
           >
             ＋
           </button>
         </div>
 
-        <p className="mt-12 text-center text-2xl text-white">
+        <p className="mt-12 text-center text-2xl">
           {statLabels[weapon.refineType] ?? weapon.refineType}
           {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)}
           &nbsp;{value}% 증가된다.

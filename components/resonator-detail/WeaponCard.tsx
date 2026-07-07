@@ -15,9 +15,9 @@ interface Props {
 };
 
 const statLabels: Record<string, string> = {
-  hp: "HP",
-  attack: "공격력",
-  defense: "방어력",
+  hp_percent: "HP",
+  attack_percent: "공격력",
+  defense_percent: "방어력",
   energy_regen: "공명 효율",
   critical_rate: "크리티컬",
   critical_damage: "크리티컬 피해",

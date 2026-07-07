@@ -8,8 +8,50 @@ interface Props {
   nodes: ResonanceNode[];
 }
 
+
+const statLabels: Record<string, string> = {
+  hp_percent: "HP",
+  attack_percent: "공격력",
+  defense_percent: "방어력",
+  energy_regen: "공명 효율",
+  critical_rate: "크리티컬",
+  critical_damage: "크리티컬 피해",
+  resonance_skill_damage_bonus: "공명 스킬 피해 보너스",
+  basic_attack_damage_bonus: "기본 공격 피해 보너스",
+  heavy_attack_damage_bonus: "강공격 피해 보너스",
+  resonance_liberation_damage_bonus: "공명 해방 피해 보너스",
+  glacio_damage_bonus: "응결 피해 보너스",
+  fusion_damage_bonus: "융융 피해 보너스",
+  conducto_damage_bonus: "전도 피해 보너스",
+  aero_damage_bonus: "기류 피해 보너스",
+  spectra_damage_bonus: "회절 피해 보너스",
+  havoc_damage_bonus: "인멸 피해 보너스",
+  healing_bonus: "치료 효과 보너스",
+};
+
+
+const getParticle = (word: string) => {
+  if (!word) return "";
+
+  const lastChar = word[word.length - 1];
+  const code = lastChar.charCodeAt(0);
+
+  // 한글 범위가 아닐 경우 기본 "가"
+  if (code < 0xac00 || code > 0xd7a3) return "가";
+
+  // 한글 종성 여부 계산
+  const hasBatchim = (code - 0xac00) % 28 !== 0;
+
+  return hasBatchim ? "이" : "가";
+};
+
+
 export default function ResonanceNodeEditor({ nodes }: Props) {
-  const activeNodes = nodes.filter((n) => n.active);
+
+  const [selectedNode, setSelectedNode] = useState<{
+    type: string;
+    value: number;
+  } | null>(null);
 
   const pathRef = useRef<SVGPathElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
@@ -93,6 +135,14 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
                       y={point.y - 40}
                       width="80"
                       height="80"
+                      style={{ cursor: "pointer" }}
+                      onClick={() =>
+                        node.stat &&
+                        setSelectedNode({
+                          type: node.stat.type,
+                          value: node.stat.value,
+                        })
+                      }
                     />
                   ))}
                 </g>
@@ -100,6 +150,14 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
             })}
           </g>
         </svg>
+
+        {selectedNode && (
+          <p className="mt-12 text-center text-2xl">
+            {statLabels[selectedNode.type] ?? selectedNode.type}
+            {getParticle(statLabels[selectedNode.type] ?? selectedNode.type)}
+            &nbsp;{selectedNode.value}% 증가된다.
+          </p>
+        )}
       </div>
     </section>
   );
