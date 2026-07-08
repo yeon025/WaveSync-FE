@@ -60,12 +60,7 @@ export default function ResonatorInfo({ resonator }: Props) {
             alt={resonator.element}
             width={60}
             height={60}
-            className="
-              h-12
-              w-12
-              lg:h-[60px]
-              lg:w-[60px]
-            "
+            className="h-12 w-12 lg:h-[60px] lg:w-[60px]"
           />
 
           <h2 className="self-center text-right text-3xl lg:text-4xl">{resonator.resonatorName}</h2>

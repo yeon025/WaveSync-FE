@@ -111,7 +111,7 @@ export default async function Page({ params }: Props) {
   const { userResonatorId } = await params;
 
   return (
-    <main className="w-full min-h-screen relative overflow-hidden">
+    <main className="relative">
       {/* 모바일 Sidebar */}
       <MobileSidebar active="resonator-setting" userResonatorId={userResonatorId} />
 
@@ -119,11 +119,7 @@ export default async function Page({ params }: Props) {
         {/* 데스크탑 Sidebar */}
         <DesktopSidebar active="resonator-setting" userResonatorId={userResonatorId} />
 
-        <div
-          className="
-            flex w-full justify-center flex-col items-center gap-10 py-10
-            lg:flex-row lg:py-20"
-        >
+        <div className="flex w-full flex-col items-center justify-center gap-10 py-10 lg:flex-row lg:py-20">
           <ResonanceNodeEditor nodes={data.nodes} />
           <WeaponEditor weapon={data.weapon} />
         </div>

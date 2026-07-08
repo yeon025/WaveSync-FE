@@ -11,7 +11,7 @@ export default function MobileResonanceChain({ level }: Props) {
         공명 체인
       </h2>
 
-      <div className="flex justify-center gap-3">
+      <div className="flex justify-center gap-1">
         {Array.from({ length: 6 }).map((_, index) => (
           <Image
             key={index}

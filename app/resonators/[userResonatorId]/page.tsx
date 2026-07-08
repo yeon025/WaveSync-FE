@@ -56,16 +56,12 @@ export default async function Page({ params }: Props) {
         {/* 모바일 Sidebar */}
         <MobileSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
-        <div
-          className="relative grid grid-cols-1
-            lg:h-full lg:grid-cols-[96px_minmax(350px,390px)_max-content_470px]
-            2xl:grid-cols-[96px_minmax(390px,420px)_minmax(850px,max-content)_470px]"
-        >
+        <div className="relative grid grid-cols-1 lg:grid-cols-[96px_minmax(350px,390px)_max-content_470px] 2xl:grid-cols-[96px_minmax(390px,420px)_minmax(850px,max-content)_470px]">
           {/* 데스크탑 Sidebar */}
           <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
           {/* 좌측 정보 */}
-          <div className="order-2 min-w-0 flex justify-center px-4 pt-8 lg:order-1 lg:pl-8 lg:pt-16">
+          <div className="order-2 flex min-w-0 justify-center px-4 pt-8 lg:order-1 lg:pt-16 lg:pl-10">
             <ResonatorInfo resonator={resonatorDetail} />
           </div>
 
@@ -77,13 +73,12 @@ export default async function Page({ params }: Props) {
               width={718}
               height={1026}
               priority
-              className="pointer-events-none h-[60vh] w-auto select-none
-                sm:h-[70vh] lg:h-[90vh] lg:translate-y-14 lg:translate-x-2"
+              className="pointer-events-none h-[60vh] w-auto select-none sm:h-[70vh] lg:h-[90vh] lg:translate-x-2 lg:translate-y-14"
             />
           </div>
 
           {/* 우측 */}
-          <div className="order-3 flex flex-col gap-8 px-8 pt-16 lg:pl-0 lg:pr-16">
+          <div className="order-3 flex flex-col gap-8 px-6 pt-16 lg:pr-16 lg:pl-0">
             <WeaponCard weapon={resonatorDetail.weapon} />
 
             <ResonanceChain level={resonatorDetail.resonanceChainLevel} />

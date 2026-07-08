@@ -22,7 +22,7 @@ export default function ResonanceChain({ level }: Props) {
   return (
     <section className="w-full max-w-[280px]">
       <div className="hidden w-full max-w-[280px] lg:block">
-        <svg viewBox="-40 -40 250 600" className="w-auto h-[450px] 2xl:h-[600px]">
+        <svg viewBox="-40 -40 250 600" className="h-[450px] w-auto 2xl:h-[600px]">
           {/* 연결선 */}
           <path
             ref={pathRef}

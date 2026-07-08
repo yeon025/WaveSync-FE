@@ -34,18 +34,7 @@ export default function DesktopSidebar({ active, userResonatorId }: Props) {
   return (
     <aside
       aria-label="사이드바 내비게이션"
-      className="
-        hidden
-        lg:flex
-        sticky
-        top-0
-        h-screen
-        w-24
-        shrink-0
-        flex-col
-        border-r
-        border-white/15
-      "
+      className="sticky top-0 hidden h-screen w-24 shrink-0 flex-col border-r border-white/15 lg:flex"
     >
       {/* 로고 */}
       <div className="flex justify-center pt-6">
@@ -67,17 +56,7 @@ export default function DesktopSidebar({ active, userResonatorId }: Props) {
               key={item.id}
               href={`/resonators/${userResonatorId}${item.href}`}
               aria-current={isActive ? "page" : undefined}
-              className={`
-                relative
-                flex
-                flex-col
-                items-center
-                gap-1.5
-                rounded-2xl
-                px-1
-                py-3.5
-                ${isActive ? "bg-[#d6b15c12]" : ""}
-              `}
+              className={`relative flex flex-col items-center gap-1.5 rounded-2xl px-1 py-3.5 ${isActive ? "bg-[#d6b15c12]" : ""} `}
             >
               <div className="relative h-6 w-6">
                 <Image
@@ -98,17 +77,7 @@ export default function DesktopSidebar({ active, userResonatorId }: Props) {
               </span>
 
               {isActive && (
-                <div
-                  className="
-                    absolute
-                    left-0
-                    top-[18px]
-                    h-10
-                    w-[3px]
-                    rounded-r-full
-                    bg-[#d6b15c]
-                  "
-                />
+                <div className="absolute top-[18px] left-0 h-10 w-[3px] rounded-r-full bg-[#d6b15c]" />
               )}
             </Link>
           );

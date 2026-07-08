@@ -45,13 +45,7 @@ export default function WeaponCard({ weapon }: Props) {
             alt={`${weapon.name} 무기 이미지`}
             width={150}
             height={150}
-            className="
-              h-[110px]
-              w-[110px]
-              object-contain
-              lg:h-[135px]
-              lg:w-[135px]
-            "
+            className="h-[110px] w-[110px] object-contain lg:h-[135px] lg:w-[135px]"
           />
         </div>
 

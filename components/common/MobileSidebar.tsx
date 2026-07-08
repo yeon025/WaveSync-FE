@@ -32,15 +32,7 @@ const navigationItems = [
 
 export default function MobileSidebar({ active, userResonatorId }: Props) {
   return (
-    <aside
-      aria-label="사이드바 내비게이션"
-      className="
-        lg:hidden
-        w-full
-        border-b
-        border-white/15
-      "
-    >
+    <aside aria-label="사이드바 내비게이션" className="w-full border-b border-white/15 lg:hidden">
       {/* 로고 */}
       <div className="flex justify-center pt-6">
         <WaveSyncLogo textSizeClass="text-2xl" direction="row" imageSize={20} />
@@ -56,18 +48,7 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
               key={item.id}
               href={`/resonators/${userResonatorId}${item.href}`}
               aria-current={isActive ? "page" : undefined}
-              className={`
-                relative
-                flex
-                shrink-0
-                flex-col
-                items-center
-                gap-1.5
-                rounded-2xl
-                px-1
-                py-3.5
-                ${isActive ? "bg-[#d6b15c12]" : ""}
-              `}
+              className={`relative flex shrink-0 flex-col items-center gap-1.5 rounded-2xl px-1 py-3.5 ${isActive ? "bg-[#d6b15c12]" : ""} `}
             >
               <div className="relative h-6 w-6">
                 <Image

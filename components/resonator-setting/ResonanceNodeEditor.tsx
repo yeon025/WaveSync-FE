@@ -63,7 +63,7 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
     <section className="flex w-full flex-col px-4 lg:w-[550px] lg:px-10">
       <h1 className="text-2xl font-bold lg:text-3xl">공명 노드</h1>
 
-      <div className="relative mt-6 pb-8 h-full w-full rounded-[10px] border border-[#848484]">
+      <div className="relative mt-6 h-full w-full rounded-[10px] border border-[#848484] pb-8">
         <div className="flex justify-center overflow-hidden">
           <svg viewBox="-40 20 600 535" className="w-auto origin-top scale-100">
             <g transform="rotate(-90 0 0) translate(-520 0)">

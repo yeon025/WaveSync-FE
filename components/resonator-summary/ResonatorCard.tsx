@@ -11,7 +11,7 @@ export default function ResonatorCard({ resonator, className = "", onClick }: Pr
     <article
       onClick={onClick}
       className={
-        "w-full cursor-pointer select-none transition-transform duration-200 hover:scale-105 " +
+        "w-full cursor-pointer transition-transform duration-200 select-none hover:scale-105 " +
         className
       }
     >
@@ -22,7 +22,7 @@ export default function ResonatorCard({ resonator, className = "", onClick }: Pr
           alt={resonator.resonatorName}
           fill
           className={
-            "object-cover " + (resonator.userResonatorId === null ? "grayscale opacity-60" : "")
+            "object-cover " + (resonator.userResonatorId === null ? "opacity-60 grayscale" : "")
           }
         />
       </div>
@@ -32,7 +32,7 @@ export default function ResonatorCard({ resonator, className = "", onClick }: Pr
         className="mt-1 flex items-center justify-center border-1"
         style={{ borderColor: resonator.rarity == 4 ? "#9d6bb9" : "#FFF691" }}
       >
-        <span className="text-sm lg:text-base truncate">{resonator.resonatorName}</span>
+        <span className="truncate text-sm lg:text-base">{resonator.resonatorName}</span>
       </div>
     </article>
   );

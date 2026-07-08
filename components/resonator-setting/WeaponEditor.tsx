@@ -107,7 +107,7 @@ export default function WeaponEditor({ weapon }: Props) {
             −
           </button>
 
-          <div className="flex gap-2">
+          <div className="flex gap-1">
             {Array.from({ length: 5 }).map((_, index) => (
               <Image
                 key={index}
