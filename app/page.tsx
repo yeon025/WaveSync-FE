@@ -3,7 +3,7 @@
 import WaveSyncLogo from "@/components/common/Logo";
 import ResonatorGrid from "@/components/resonator-summary/ResonatorGrid";
 import Button from "@/components/common/Button";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import IconButton from "@/components/common/IconButton";
 
 const resonators: ResonatorSummaryResponse[] = [
@@ -80,17 +80,11 @@ const resonators: ResonatorSummaryResponse[] = [
 ];
 
 export default function Page() {
-  // 페이지 이동을 위한 Next.js Router
-  const router = useRouter();
-
   return (
     <main className="min-h-screen px-4 py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* 헤더 */}
-        <header className="mb-10">
-          {/* 로고 */}
-          <WaveSyncLogo imageSize={25} direction="row" textSizeClass="text-4xl" />
-        </header>
+        {/* 로고 */}
+        <WaveSyncLogo imageSize={25} direction="row" textSizeClass="text-4xl" />
 
         <div className="mt-8 mb-8 flex items-center justify-end gap-8">
           {/* 삭제 버튼 */}
@@ -102,9 +96,11 @@ export default function Page() {
           />
 
           {/* 업로드 페이지로 이동 버튼 */}
-          <Button type="button" onClick={() => router.push("/upload")} className="px-8">
-            공명자 정보 가져오기
-          </Button>
+          <Link href="/upload">
+            <Button type="button" className="px-8">
+              공명자 정보 가져오기
+            </Button>
+          </Link>
         </div>
 
         {/* 카드 그리드 */}

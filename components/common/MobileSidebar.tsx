@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import WaveSyncLogo from "./Logo";
 
@@ -31,8 +31,6 @@ const navigationItems = [
 ] as const;
 
 export default function MobileSidebar({ active, userResonatorId }: Props) {
-  const router = useRouter();
-
   return (
     <aside
       aria-label="사이드바 내비게이션"
@@ -54,11 +52,10 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
           const isActive = item.id === active;
 
           return (
-            <button
+            <Link
               key={item.id}
-              type="button"
+              href={`/resonators/${userResonatorId}${item.href}`}
               aria-current={isActive ? "page" : undefined}
-              onClick={() => router.push(`/resonators/${userResonatorId}${item.href}`)}
               className={`
                 relative
                 flex
@@ -69,7 +66,6 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
                 rounded-2xl
                 px-1
                 py-3.5
-                cursor-pointer
                 ${isActive ? "bg-[#d6b15c12]" : ""}
               `}
             >
@@ -90,7 +86,7 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
               >
                 {item.label}
               </span>
-            </button>
+            </Link>
           );
         })}
       </nav>
