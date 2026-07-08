@@ -83,46 +83,57 @@ export default function WeaponEditor({ weapon }: Props) {
   };
 
   return (
-    <section className="flex w-[550px] flex-col">
-      <h1 className="text-3xl font-bold text-white">무기 재련</h1>
+    <section className="flex w-full flex-col px-4 lg:w-[550px] lg:px-10">
+      <h1 className="text-2xl font-bold text-white lg:text-3xl">무기 재련</h1>
 
-      <div className="relative mt-6 h-[738px] w-[550px] rounded-[10px] border border-[#848484]">
-        <div className="mt-10 flex justify-center">
-          <Image src={weapon.imageUrl} alt="weapon" width={223} height={223} />
+      <div className="relative mt-6 w-full rounded-[10px] border border-[#848484] px-4 py-8">
+        {/* 무기 이미지 */}
+        <div className="flex justify-center">
+          <Image
+            src={weapon.imageUrl}
+            alt="weapon"
+            width={160}
+            height={160}
+            className="lg:h-[223px] lg:w-[223px]"
+          />
         </div>
 
-        <div className="mt-12 flex items-center justify-center gap-6">
+        {/* 재련 단계 */}
+        <div className="mt-10 flex items-center justify-center gap-3 lg:mt-12 lg:gap-6">
           <button
             onClick={decrease}
-            className="text-4xl font-bold hover:text-yellow-400 cursor-pointer"
+            className="cursor-pointer text-3xl font-bold transition-colors hover:text-yellow-400 lg:text-4xl"
           >
             −
           </button>
 
-          <div className="flex gap-3">
+          <div className="flex gap-2 lg:gap-3">
             {Array.from({ length: 5 }).map((_, index) => (
               <Image
                 key={index}
                 src={index < level ? "/star-node-active.svg" : "/star-node-deactive.svg"}
                 alt={`무기 재련 ${index + 1}`}
-                width={56}
-                height={56}
+                width={40}
+                height={40}
+                className="lg:h-[56px] lg:w-[56px]"
               />
             ))}
           </div>
 
           <button
             onClick={increase}
-            className="text-4xl font-bold hover:text-yellow-400 cursor-pointer"
+            className="cursor-pointer text-3xl font-bold transition-colors hover:text-yellow-400 lg:text-4xl"
           >
             ＋
           </button>
         </div>
 
-        <p className="mt-12 text-center text-2xl">
+        {/* 효과 */}
+        <p className="mt-8 px-4 text-center text-lg lg:mt-12 lg:text-2xl">
           {statLabels[weapon.refineType] ?? weapon.refineType}
           {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)}
-          &nbsp;{value}% 증가된다.
+          &nbsp;
+          {value}% 증가된다.
         </p>
       </div>
     </section>

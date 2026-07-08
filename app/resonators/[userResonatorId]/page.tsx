@@ -65,18 +65,12 @@ export default async function Page({ params }: Props) {
           <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
           {/* 좌측 정보 */}
-          <div
-            className="order-2 min-w-0 flex justify-center px-4 pt-8
-              lg:pl-8 lg:pt-16"
-          >
+          <div className="order-2 min-w-0 flex justify-center px-4 pt-8 lg:pl-8 lg:pt-16">
             <ResonatorInfo resonator={resonatorDetail} />
           </div>
 
           {/* 중앙 캐릭터 */}
-          <div
-            className="relative order-1 flex justify-center
-              lg:order-2 lg:-translate-y-10"
-          >
+          <div className="relative order-1 flex justify-center lg:order-2 lg:-translate-y-10">
             <Image
               src={resonatorDetail.standingImageUrl}
               alt={resonatorDetail.resonatorName}
@@ -89,10 +83,7 @@ export default async function Page({ params }: Props) {
           </div>
 
           {/* 우측 */}
-          <div
-            className="order-3 flex flex-col gap-8 px-8 pt-16
-              lg:pl-0 lg:pr-16"
-          >
+          <div className="order-3 flex flex-col gap-8 px-8 pt-16 lg:pl-0 lg:pr-16">
             <WeaponCard weapon={resonatorDetail.weapon} />
 
             <ResonanceChain level={resonatorDetail.resonanceChainLevel} />
