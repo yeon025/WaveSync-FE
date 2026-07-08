@@ -33,13 +33,16 @@ const navigationItems = [
 export default function DesktopSidebar({ active, userResonatorId }: Props) {
   return (
     <aside
-      aria-label="사이드바 내비게이션"
+      aria-label="데스크톱 사이드바 내비게이션"
       className="sticky top-0 hidden h-screen w-24 shrink-0 flex-col border-r border-white/15 lg:flex"
     >
       {/* 로고 */}
-      <div className="flex justify-center pt-6">
-        <WaveSyncLogo textSizeClass="text-sm" direction="column" imageSize={20} />
-      </div>
+      <WaveSyncLogo
+        textSizeClass="text-base"
+        fontSizeClass="font-normal"
+        direction="column"
+        imageSize={20}
+      />
 
       {/* 구분선 */}
       <div className="px-3 py-4">

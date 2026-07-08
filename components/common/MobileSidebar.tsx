@@ -32,10 +32,18 @@ const navigationItems = [
 
 export default function MobileSidebar({ active, userResonatorId }: Props) {
   return (
-    <aside aria-label="사이드바 내비게이션" className="w-full border-b border-white/15 lg:hidden">
+    <aside
+      aria-label="모바일 사이드바 내비게이션"
+      className="w-full border-b border-white/15 lg:hidden"
+    >
       {/* 로고 */}
-      <div className="flex justify-center pt-6">
-        <WaveSyncLogo textSizeClass="text-2xl" direction="row" imageSize={20} />
+      <div className="flex justify-center">
+        <WaveSyncLogo
+          textSizeClass="text-2xl"
+          fontSizeClass="font-normal"
+          direction="row"
+          imageSize={20}
+        />
       </div>
 
       {/* 메뉴 */}

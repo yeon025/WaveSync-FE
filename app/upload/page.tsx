@@ -7,14 +7,14 @@ import IconButton from "@/components/common/IconButton";
 
 export default function Upload() {
   return (
-    <main className="relative flex min-h-screen items-center justify-center px-4 py-6 md:px-8">
+    <main className="relative flex min-h-screen items-center justify-center px-4">
       {/* 닫기 버튼 */}
       <Link href="/" className="absolute top-6 right-6" aria-label="닫기">
         <IconButton icon="/close.svg" alt="닫기" size={26} />
       </Link>
 
       {/* 가운데 정렬되는 콘텐츠 */}
-      <div className="w-full max-w-3xl">
+      <div className="w-full">
         {/* 제목 */}
         <h1 className="text-center text-base leading-relaxed md:text-xl">
           Wuthering Waves Official 디스코드 서버의
@@ -34,7 +34,7 @@ export default function Upload() {
             alt="프로필 예시"
             fill
             priority
-            className="rounded-lg object-contain"
+            className="rounded-lg"
           />
         </section>
 

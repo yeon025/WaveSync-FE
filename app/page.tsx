@@ -81,12 +81,12 @@ const resonators: ResonatorSummaryResponse[] = [
 
 export default function Page() {
   return (
-    <main className="min-h-screen px-4 py-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen">
+      <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
         {/* 로고 */}
         <WaveSyncLogo imageSize={25} direction="row" textSizeClass="text-4xl" />
 
-        <div className="mt-8 mb-8 flex items-center justify-end gap-8">
+        <div className="my-8 flex items-center justify-end gap-8">
           {/* 삭제 버튼 */}
           <IconButton
             icon="/trash-bin.svg"
@@ -97,9 +97,7 @@ export default function Page() {
 
           {/* 업로드 페이지로 이동 버튼 */}
           <Link href="/upload">
-            <Button type="button" className="px-8">
-              공명자 정보 가져오기
-            </Button>
+            <Button>공명자 정보 가져오기</Button>
           </Link>
         </div>
 

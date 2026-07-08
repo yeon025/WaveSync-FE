@@ -4,10 +4,16 @@ import Link from "next/link";
 interface Props {
   imageSize: number;
   textSizeClass: string;
+  fontSizeClass: string;
   direction: "row" | "column";
 }
 
-export default function WaveSyncLogo({ imageSize, textSizeClass, direction }: Props) {
+export default function WaveSyncLogo({
+  imageSize,
+  textSizeClass,
+  fontSizeClass,
+  direction,
+}: Props) {
   const isColumn = direction === "column";
 
   return (
@@ -21,12 +27,8 @@ export default function WaveSyncLogo({ imageSize, textSizeClass, direction }: Pr
         className={`h-${imageSize} w-${imageSize} object-contain`}
       />
 
-      <div
-        className={`flex font-semibold tracking-[0.22px] ${
-          textSizeClass
-        } ${isColumn ? "mt-2" : ""}`}
-      >
-        <span className="text-white">Wave</span>
+      <div className={`flex tracking-[0.22px] ${textSizeClass} ${fontSizeClass}`}>
+        <span>Wave</span>
         <span className="bg-gradient-to-r from-[#5b7cff] to-[#69e3ff] bg-clip-text text-transparent">
           Sync
         </span>
