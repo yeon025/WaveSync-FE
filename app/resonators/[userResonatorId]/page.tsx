@@ -51,8 +51,8 @@ export default async function Page({ params }: Props) {
   const { userResonatorId } = await params;
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden lg:overflow-hidden">
-      <div className="min-h-screen max-w-[1920px] lg:h-screen lg:overflow-hidden">
+    <main className="relative min-h-screen overflow-x-hidden">
+      <div className="min-h-screen max-w-[1920px] lg:h-screen">
         {/* 모바일 Sidebar */}
         <MobileSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
@@ -65,7 +65,7 @@ export default async function Page({ params }: Props) {
           <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
           {/* 좌측 정보 */}
-          <div className="order-2 min-w-0 flex justify-center px-4 pt-8 lg:pl-8 lg:pt-16">
+          <div className="order-2 min-w-0 flex justify-center px-4 pt-8 lg:order-1 lg:pl-8 lg:pt-16">
             <ResonatorInfo resonator={resonatorDetail} />
           </div>
 

@@ -122,7 +122,7 @@ export default async function Page({ params }: Props) {
         <div
           className="
             flex w-full justify-center flex-col items-center gap-10 py-10
-            lg:flex-row lg:items-start lg:gap-30 lg:py-20"
+            lg:flex-row lg:py-20"
         >
           <ResonanceNodeEditor nodes={data.nodes} />
           <WeaponEditor weapon={data.weapon} />

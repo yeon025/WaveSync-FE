@@ -29,12 +29,10 @@ export default function ResonatorCard({ resonator, className = "", onClick }: Pr
 
       {/* 이름 */}
       <div
-        className="mt-1 flex items-center justify-center border-1 py-0.5"
+        className="mt-1 flex items-center justify-center border-1"
         style={{ borderColor: resonator.rarity == 4 ? "#9d6bb9" : "#FFF691" }}
       >
-        <span className="text-sm sm:text-base font-semibold truncate">
-          {resonator.resonatorName}
-        </span>
+        <span className="text-sm lg:text-base truncate">{resonator.resonatorName}</span>
       </div>
     </article>
   );

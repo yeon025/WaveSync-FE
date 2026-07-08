@@ -9,7 +9,7 @@ export default function Upload() {
   return (
     <main className="relative flex min-h-screen items-center justify-center px-4 py-6 md:px-8">
       {/* 닫기 버튼 */}
-      <Link href="/" className="absolute right-6 top-6 md:right-8 md:top-8" aria-label="닫기">
+      <Link href="/" className="absolute right-6 top-6" aria-label="닫기">
         <IconButton icon="/close.svg" alt="닫기" size={24} className="h-6 w-6" />
       </Link>
 

@@ -99,7 +99,7 @@ export default function WeaponEditor({ weapon }: Props) {
         </div>
 
         {/* 재련 단계 */}
-        <div className="mt-10 flex items-center justify-center gap-3 lg:mt-12 lg:gap-6">
+        <div className="mt-10 flex items-center justify-center gap-3 lg:mt-12">
           <button
             onClick={decrease}
             className="cursor-pointer text-3xl font-bold transition-colors hover:text-yellow-400 lg:text-4xl"
@@ -107,7 +107,7 @@ export default function WeaponEditor({ weapon }: Props) {
             −
           </button>
 
-          <div className="flex gap-2 lg:gap-3">
+          <div className="flex gap-2">
             {Array.from({ length: 5 }).map((_, index) => (
               <Image
                 key={index}
