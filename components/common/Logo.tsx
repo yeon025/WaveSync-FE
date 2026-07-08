@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-
 interface Props {
   imageSize: number;
   textSizeClass: string;
@@ -18,9 +17,7 @@ export default function WaveSyncLogo({
 
   return (
     <div
-      className={`flex ${
-        isColumn ? "flex-col items-center" : "items-center gap-3"
-      } ${className}`}
+      className={`flex ${isColumn ? "flex-col items-center" : "items-center gap-3"} ${className}`}
     >
       <Image
         src="/images/wavesync-logo.png"

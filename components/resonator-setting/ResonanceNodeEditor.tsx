@@ -2,12 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
-
-
 interface Props {
   nodes: ResonanceNode[];
 }
-
 
 const statLabels: Record<string, string> = {
   hp_percent: "HP",
@@ -29,7 +26,6 @@ const statLabels: Record<string, string> = {
   healing_bonus: "치료 효과 보너스",
 };
 
-
 const getParticle = (word: string) => {
   if (!word) return "";
 
@@ -45,9 +41,7 @@ const getParticle = (word: string) => {
   return hasBatchim ? "이" : "가";
 };
 
-
 export default function ResonanceNodeEditor({ nodes }: Props) {
-
   const [selectedNode, setSelectedNode] = useState<{
     type: string;
     value: number;
@@ -62,24 +56,15 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
     const path = pathRef.current;
     const totalLength = path.getTotalLength();
 
-    setPoints(
-      Array.from({ length: 5 }, (_, i) =>
-        path.getPointAtLength((totalLength * i) / 4)
-      )
-    );
+    setPoints(Array.from({ length: 5 }, (_, i) => path.getPointAtLength((totalLength * i) / 4)));
   }, []);
 
   return (
     <section className="flex w-[550px] flex-col">
-      <h1 className="text-3xl font-bold text-white">
-        공명 노드
-      </h1>
+      <h1 className="text-3xl font-bold text-white">공명 노드</h1>
 
       <div className="relative mt-6 h-[738px] w-[550px] rounded-[10px] border border-[#848484]">
-        <svg
-          viewBox="-40 -40 600 600"
-          className="w-auto h-[450px] 2xl:h-[550px]"
-        >
+        <svg viewBox="-40 -40 600 600" className="w-auto h-[450px] 2xl:h-[550px]">
           <g transform="rotate(-90 0 0) translate(-520 0)">
             {/* 연결선 */}
             <path
@@ -105,9 +90,9 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
                   {/* 직선 */}
                   <line
                     x1={point.x + 20}
-                    y1={point.y-1}
+                    y1={point.y - 1}
                     x2={point.x + 230}
-                    y2={point.y-1}
+                    y2={point.y - 1}
                     stroke="#E6E6E6"
                     strokeWidth={3}
                     strokeLinecap="round"
@@ -126,11 +111,7 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
                   {rowNodes.map((node, i) => (
                     <image
                       key={i}
-                      href={
-                        node.active
-                          ? "/star-node-active.svg"
-                          : "/star-node-deactive.svg"
-                      }
+                      href={node.active ? "/star-node-active.svg" : "/star-node-deactive.svg"}
                       x={point.x + 80 + i * 110}
                       y={point.y - 40}
                       width="80"

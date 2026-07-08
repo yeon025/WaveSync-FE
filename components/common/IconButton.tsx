@@ -8,13 +8,7 @@ interface Props {
   className?: string;
 }
 
-export default function IconButton({
-  icon,
-  alt,
-  size,
-  onClick,
-  className = "",
-}: Props) {
+export default function IconButton({ icon, alt, size, onClick, className = "" }: Props) {
   return (
     <button
       type="button"
@@ -22,12 +16,7 @@ export default function IconButton({
       onClick={onClick}
       className={`flex cursor-pointer items-center justify-center ${className}`}
     >
-      <Image
-        src={icon}
-        alt={alt}
-        width={size}
-        height={size}
-      />
+      <Image src={icon} alt={alt} width={size} height={size} />
     </button>
   );
 }

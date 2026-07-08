@@ -30,7 +30,6 @@ interface Props {
   };
 }
 
-
 const statLabels: Record<string, string> = {
   hp: "HP",
   attack: "공격력",
@@ -53,10 +52,7 @@ const statLabels: Record<string, string> = {
 
 export default function ResonatorInfo({ resonator }: Props) {
   return (
-    <section
-      aria-label="캐릭터 개요"
-      className="w-full"
-    >
+    <section aria-label="캐릭터 개요" className="w-full">
       <header className="flex flex-col gap-0">
         <div className="flex items-start justify-between gap-4">
           <Image
@@ -72,20 +68,13 @@ export default function ResonatorInfo({ resonator }: Props) {
             "
           />
 
-          <h2 className="self-center text-right text-3xl lg:text-4xl">
-            {resonator.resonatorName}
-          </h2>
+          <h2 className="self-center text-right text-3xl lg:text-4xl">{resonator.resonatorName}</h2>
         </div>
 
         <p className="ml-1 lg:ml-4">
-          <span className="text-xl font-medium">
-            Lv. 90 
-          </span>
+          <span className="text-xl font-medium">Lv. 90</span>
 
-          <span className="text-base">
-            {" "}
-            / 90
-          </span>
+          <span className="text-base"> / 90</span>
         </p>
       </header>
 
@@ -95,17 +84,14 @@ export default function ResonatorInfo({ resonator }: Props) {
       {/* 스탯 */}
       <div className="flex flex-col gap-1">
         {Object.entries(resonator.stat)
-        .filter(([, value]) => value !== 0)
-        .map(([key, value]) => (
-          <StatBox
-            key={key}
-            label={statLabels[key]}
-            value={
-              key === "hp" || key === "attack" || key === "defense"
-                ? value : `${value} %`
-            }
-          />
-        ))}
+          .filter(([, value]) => value !== 0)
+          .map(([key, value]) => (
+            <StatBox
+              key={key}
+              label={statLabels[key]}
+              value={key === "hp" || key === "attack" || key === "defense" ? value : `${value} %`}
+            />
+          ))}
       </div>
     </section>
   );

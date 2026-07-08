@@ -4,17 +4,12 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
-export default function Button({
-  children,
-  className = "",
-  ...props
-}: Props) {
+export default function Button({ children, className = "", ...props }: Props) {
   return (
     <button
       className={`
         flex items-center justify-center
         rounded-full border-2 border-[#848484]
-        bg-[#2a2c32]
         px-8 py-2
         shadow-[0px_6px_18px_#00000033]
         transition-colors
@@ -24,9 +19,7 @@ export default function Button({
       `}
       {...props}
     >
-      <span className="text-base">
-        {children}
-      </span>
+      <span className="text-base">{children}</span>
     </button>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from 'react';
+import { useState } from "react";
 
 interface Props {
   weapon: {
@@ -36,7 +36,6 @@ const statLabels: Record<string, string> = {
   healing_bonus: "치료 효과 보너스",
 };
 
-
 const getParticle = (word: string) => {
   if (!word) return "";
 
@@ -52,9 +51,7 @@ const getParticle = (word: string) => {
   return hasBatchim ? "이" : "가";
 };
 
-
 export default function WeaponEditor({ weapon }: Props) {
-
   const getRefineValue = (level: number) => {
     const values = [
       weapon.refine1Value,
@@ -64,8 +61,8 @@ export default function WeaponEditor({ weapon }: Props) {
       weapon.refine5Value,
     ];
 
-  return values[level - 1];
-};
+    return values[level - 1];
+  };
 
   const [level, setLevel] = useState(weapon.refineLevel);
   const maxLevel = 5;
@@ -87,19 +84,11 @@ export default function WeaponEditor({ weapon }: Props) {
 
   return (
     <section className="flex w-[550px] flex-col">
-      <h1 className="text-3xl font-bold text-white">
-        무기 재련
-      </h1>
+      <h1 className="text-3xl font-bold text-white">무기 재련</h1>
 
       <div className="relative mt-6 h-[738px] w-[550px] rounded-[10px] border border-[#848484]">
-
         <div className="mt-10 flex justify-center">
-          <Image
-            src={weapon.imageUrl}
-            alt="weapon"
-            width={223}
-            height={223}
-          />
+          <Image src={weapon.imageUrl} alt="weapon" width={223} height={223} />
         </div>
 
         <div className="mt-12 flex items-center justify-center gap-6">
@@ -114,11 +103,7 @@ export default function WeaponEditor({ weapon }: Props) {
             {Array.from({ length: 5 }).map((_, index) => (
               <Image
                 key={index}
-                src={
-                  index < level
-                    ? "/star-node-active.svg"
-                    : "/star-node-deactive.svg"
-                }
+                src={index < level ? "/star-node-active.svg" : "/star-node-deactive.svg"}
                 alt={`무기 재련 ${index + 1}`}
                 width={56}
                 height={56}

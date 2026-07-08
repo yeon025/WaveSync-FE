@@ -4,4 +4,4 @@ interface ResonatorSummaryResponse {
   rarity: number;
   releaseVersion: number;
   thumbnailImageUrl: string;
-};
+}

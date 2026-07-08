@@ -12,7 +12,7 @@ interface Props {
     refineLevel: number;
     imageUrl: string;
   };
-};
+}
 
 const statLabels: Record<string, string> = {
   hp_percent: "HP",
@@ -34,14 +34,9 @@ const statLabels: Record<string, string> = {
   healing_bonus: "치료 효과 보너스",
 };
 
-export default function WeaponCard({
-  weapon,
-}: Props) {
+export default function WeaponCard({ weapon }: Props) {
   return (
-    <section
-      aria-label="무기 정보"
-      className="w-full"
-    >
+    <section aria-label="무기 정보" className="w-full">
       <div className="flex justify-center gap-5">
         {/* 무기 이미지 */}
         <div className="shrink-0">
@@ -63,20 +58,13 @@ export default function WeaponCard({
         {/* 우측 정보 */}
         <div className="flex flex-1 flex-col">
           {/* 이름 */}
-          <h2 className="text-xl">
-            {weapon.name}
-          </h2>
+          <h2 className="text-xl">{weapon.name}</h2>
 
           {/* 레벨 + 재련 */}
           <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
             <p>
-              <span className="text-lg font-medium lg:text-xl">
-                Lv. 90
-              </span>
-              <span className="text-sm lg:text-base">
-                {" "}
-                / 90
-              </span>
+              <span className="text-lg font-medium lg:text-xl">Lv. 90</span>
+              <span className="text-sm lg:text-base"> / 90</span>
             </p>
 
             <div className="flex">
@@ -84,9 +72,7 @@ export default function WeaponCard({
                 <Image
                   key={index}
                   src={
-                    index < weapon.refineLevel
-                      ? "/star-node-active.svg"
-                      : "/star-node-deactive.svg"
+                    index < weapon.refineLevel ? "/star-node-active.svg" : "/star-node-deactive.svg"
                   }
                   alt={`공명 체인 ${index + 1}`}
                   width={28}
@@ -98,16 +84,10 @@ export default function WeaponCard({
 
           {/* 스탯 */}
           <div className="mt-1 flex flex-col gap-1">
-            <StatBox
-              label="공격력"
-              value={weapon.attackValue}
-            />
+            <StatBox label="공격력" value={weapon.attackValue} />
 
             <StatBox
-              label={
-                statLabels[weapon.main.type] ??
-                weapon.main.type
-              }
+              label={statLabels[weapon.main.type] ?? weapon.main.type}
               value={`${weapon.main.value}%`}
             />
           </div>

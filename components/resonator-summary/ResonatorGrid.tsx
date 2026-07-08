@@ -2,7 +2,7 @@ import ResonatorCard from "./ResonatorCard";
 
 interface Props {
   resonators: ResonatorSummaryResponse[];
-};
+}
 
 export default function ResonatorGrid({ resonators }: Props) {
   return (

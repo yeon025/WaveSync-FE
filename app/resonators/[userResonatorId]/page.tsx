@@ -1,12 +1,10 @@
 import Image from "next/image";
-
-import ResonatorInfo from "@/components/resonator-detail/ResonatorInfo";;
+import ResonatorInfo from "@/components/resonator-detail/ResonatorInfo";
 import WeaponCard from "@/components/resonator-detail/WeaponCard";
 import ResonanceChain from "@/components/resonator-detail/ResonanceChain";
 import MobileResonanceChain from "@/components/resonator-detail/MobileResonanceChain";
 import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
-
 
 const resonatorDetail: ResonatorDetailResponse = {
   userResonatorId: 4,
@@ -46,23 +44,17 @@ const resonatorDetail: ResonatorDetailResponse = {
 };
 
 interface Props {
-  params: Promise<{
-    userResonatorId: string;
-  }>;
+  params: Promise<{ userResonatorId: string }>;
 }
 
 export default async function Page({ params }: Props) {
   const { userResonatorId } = await params;
 
-
   return (
     <main className="relative min-h-screen overflow-x-hidden lg:overflow-hidden">
-      <div className="mx-auto min-h-screen max-w-[1920px] lg:h-screen lg:overflow-hidden">
-
+      <div className="min-h-screen max-w-[1920px] lg:h-screen lg:overflow-hidden">
         {/* 모바일 Sidebar */}
-        <div className="lg:hidden">
-          <MobileSidebar active="resonator-info" userResonatorId={userResonatorId}/>
-        </div>
+        <MobileSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
         <div
           className="relative grid grid-cols-1
@@ -70,12 +62,10 @@ export default async function Page({ params }: Props) {
             2xl:grid-cols-[96px_minmax(390px,420px)_minmax(850px,max-content)_470px]"
         >
           {/* 데스크탑 Sidebar */}
-          <div className="hidden lg:block">
-            <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
-          </div>
+          <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
           {/* 좌측 정보 */}
-          <div 
+          <div
             className="order-2 min-w-0 flex justify-center px-4 pt-8
               lg:pl-8 lg:pt-16"
           >
@@ -83,7 +73,7 @@ export default async function Page({ params }: Props) {
           </div>
 
           {/* 중앙 캐릭터 */}
-          <div 
+          <div
             className="relative order-1 flex justify-center
               lg:order-2 lg:-translate-y-10"
           >
@@ -105,15 +95,10 @@ export default async function Page({ params }: Props) {
           >
             <WeaponCard weapon={resonatorDetail.weapon} />
 
-            <div className="hidden lg:block">
-              <ResonanceChain level={resonatorDetail.resonanceChainLevel} />
-            </div>
+            <ResonanceChain level={resonatorDetail.resonanceChainLevel} />
 
-            <div className="py-6 lg:hidden">
-              <MobileResonanceChain level={resonatorDetail.resonanceChainLevel} />
-            </div>
+            <MobileResonanceChain level={resonatorDetail.resonanceChainLevel} />
           </div>
-
         </div>
       </div>
     </main>

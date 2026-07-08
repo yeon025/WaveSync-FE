@@ -1,5 +1,5 @@
 interface ResonatorSettingResponse {
-  nodes: ResonanceNode[],
+  nodes: ResonanceNode[];
   weapon: {
     refineLevel: number;
     refineType: string;
@@ -10,4 +10,4 @@ interface ResonatorSettingResponse {
     refine5Value: number;
     imageUrl: string;
   };
-};
+}

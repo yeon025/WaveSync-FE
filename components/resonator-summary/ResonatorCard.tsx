@@ -1,13 +1,12 @@
 import Image from "next/image";
 
-
 interface Props {
   resonator: ResonatorSummaryResponse;
   className?: string;
   onClick?: () => void;
-};
+}
 
-export default function ResonatorCard({resonator, className = "", onClick,}: Props) {
+export default function ResonatorCard({ resonator, className = "", onClick }: Props) {
   return (
     <article
       onClick={onClick}
@@ -23,10 +22,7 @@ export default function ResonatorCard({resonator, className = "", onClick,}: Pro
           alt={resonator.resonatorName}
           fill
           className={
-            "object-cover " +
-            (resonator.userResonatorId === null
-              ? "grayscale opacity-60"
-              : "")
+            "object-cover " + (resonator.userResonatorId === null ? "grayscale opacity-60" : "")
           }
         />
       </div>

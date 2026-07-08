@@ -1,10 +1,7 @@
 import { useId, useRef, useState } from "react";
 import Button from "@/components/common/Button";
 
-
-
 export default function UploadForm() {
-  
   // 파일 input과 연결할 고유 id 생성
   const inputId = useId();
 
@@ -20,9 +17,7 @@ export default function UploadForm() {
   };
 
   // 선택한 이미지 파일 저장
-  const handleFileChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] ?? null;
     setSelectedFile(file);
   };
@@ -53,10 +48,7 @@ export default function UploadForm() {
   };
 
   return (
-    <form
-      onSubmit={handleUpload}
-      className="mx-auto mt-8 w-full max-w-5xl"
-    >
+    <form onSubmit={handleUpload} className="mx-auto mt-8 w-full max-w-5xl">
       <input
         id={inputId}
         ref={fileInputRef}
@@ -69,10 +61,7 @@ export default function UploadForm() {
       {/* 가운데 버튼 */}
       {!selectedFile && (
         <div className="flex justify-center">
-          <Button
-            type="button"
-            onClick={handleSelectImage}
-          >
+          <Button type="button" onClick={handleSelectImage}>
             이미지 선택
           </Button>
         </div>
@@ -99,9 +88,7 @@ export default function UploadForm() {
                 />
               </svg>
 
-              <span className="truncate text-sm text-white">
-                {selectedFile.name}
-              </span>
+              <span className="truncate text-sm text-white">{selectedFile.name}</span>
             </div>
 
             <button
@@ -115,12 +102,8 @@ export default function UploadForm() {
         </div>
       )}
 
-
       {/* 업로드 버튼 */}
-      <Button
-        type="submit"
-        className="mx-auto mt-8 max-w-md"
-      >
+      <Button type="submit" className="mx-auto mt-8 max-w-md">
         업로드
       </Button>
     </form>

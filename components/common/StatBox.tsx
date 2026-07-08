@@ -4,11 +4,7 @@ interface Props {
   className?: string;
 }
 
-export default function StatBox({
-  label,
-  value,
-  className = "",
-}: Props) {
+export default function StatBox({ label, value, className = "" }: Props) {
   return (
     <div
       className={`
@@ -29,13 +25,9 @@ export default function StatBox({
         ${className}
       `}
     >
-      <span className="text-sm sm:text-base 2xl:text-lg">
-        {label}
-      </span>
+      <span className="text-sm sm:text-base 2xl:text-lg">{label}</span>
 
-      <span className="text-sm sm:text-base 2xl:text-lg">
-        {value}
-      </span>
+      <span className="text-sm sm:text-base 2xl:text-lg">{value}</span>
     </div>
   );
 }

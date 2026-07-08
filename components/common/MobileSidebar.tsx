@@ -37,6 +37,7 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
     <aside
       aria-label="사이드바 내비게이션"
       className="
+        lg:hidden
         w-full
         border-b
         border-white/15
@@ -44,18 +45,11 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
     >
       {/* 로고 */}
       <div className="flex justify-center pt-6">
-        <WaveSyncLogo
-          textSizeClass="text-2xl"
-          direction="row"
-          imageSize={20}
-        />
+        <WaveSyncLogo textSizeClass="text-2xl" direction="row" imageSize={20} />
       </div>
 
       {/* 메뉴 */}
-      <nav
-        aria-label="주요 메뉴"
-        className="flex gap-2 overflow-x-auto px-3 py-3"
-      >
+      <nav aria-label="주요 메뉴" className="flex gap-2 overflow-x-auto px-3 py-3">
         {navigationItems.map((item) => {
           const isActive = item.id === active;
 

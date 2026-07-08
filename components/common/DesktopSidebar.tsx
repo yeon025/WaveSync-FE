@@ -30,13 +30,15 @@ const navigationItems = [
   },
 ] as const;
 
-export default function DesktopSidebar({ active,  userResonatorId }: Props) {
+export default function DesktopSidebar({ active, userResonatorId }: Props) {
   const router = useRouter();
 
   return (
     <aside
       aria-label="사이드바 내비게이션"
       className="
+        hidden
+        lg:flex
         sticky
         top-0
         flex
@@ -50,11 +52,7 @@ export default function DesktopSidebar({ active,  userResonatorId }: Props) {
     >
       {/* 로고 */}
       <div className="flex justify-center pt-6">
-        <WaveSyncLogo
-          textSizeClass="text-sm"
-          direction="column"
-          imageSize={20}
-        />
+        <WaveSyncLogo textSizeClass="text-sm" direction="column" imageSize={20} />
       </div>
 
       {/* 구분선 */}
@@ -63,10 +61,7 @@ export default function DesktopSidebar({ active,  userResonatorId }: Props) {
       </div>
 
       {/* 메뉴 */}
-      <nav
-        aria-label="주요 메뉴"
-        className="flex flex-1 flex-col gap-3 px-1"
-      >
+      <nav aria-label="주요 메뉴" className="flex flex-1 flex-col gap-3 px-1">
         {navigationItems.map((item) => {
           const isActive = item.id === active;
 

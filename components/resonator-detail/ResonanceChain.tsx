@@ -6,9 +6,7 @@ interface Props {
   level: number;
 }
 
-export default function ResonanceChain({
-  level,
-}: Props) {
+export default function ResonanceChain({ level }: Props) {
   const pathRef = useRef<SVGPathElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
 
@@ -18,20 +16,13 @@ export default function ResonanceChain({
     const path = pathRef.current;
     const totalLength = path.getTotalLength();
 
-    setPoints(
-      Array.from({ length: 6 }, (_, i) =>
-        path.getPointAtLength((totalLength * i) / 5)
-      )
-    );
+    setPoints(Array.from({ length: 6 }, (_, i) => path.getPointAtLength((totalLength * i) / 5)));
   }, []);
 
   return (
     <section className="w-full max-w-[280px]">
-      <div className="mx-auto w-[240px]">
-        <svg
-          viewBox="-40 -40 250 600"
-          className="w-auto h-[450px] 2xl:h-[600px]"
-        >
+      <div className="hidden w-full max-w-[280px] lg:block">
+        <svg viewBox="-40 -40 250 600" className="w-auto h-[450px] 2xl:h-[600px]">
           {/* 연결선 */}
           <path
             ref={pathRef}
@@ -50,11 +41,7 @@ export default function ResonanceChain({
           {points.map((point, index) => (
             <image
               key={index}
-              href={
-                index < level
-                  ? "/star-node-active.svg"
-                  : "/star-node-deactive.svg"
-              }
+              href={index < level ? "/star-node-active.svg" : "/star-node-deactive.svg"}
               x={point.x - 40}
               y={point.y - 40}
               width="80"
