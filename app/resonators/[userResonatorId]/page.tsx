@@ -8,9 +8,9 @@ import DesktopSidebar from "@/components/common/DesktopSidebar";
 
 const resonatorDetail: ResonatorDetailResponse = {
   userResonatorId: 4,
-  resonatorName: "갈브레나",
-  element: "fusion",
-  standingImageUrl: "/images/standings/갈브레나-standing.png",
+  resonatorName: "기염",
+  element: "aero",
+  standingImageUrl: "/images/standings/기염-standing.png",
   resonanceChainLevel: 4,
   weapon: {
     name: "푸른 의지",
@@ -58,9 +58,9 @@ export default async function Page({ params }: Props) {
       {/* 데스크탑 Sidebar */}
       <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
-      <div className="grid grid-cols-1 lg:ml-35 lg:grid-cols-[minmax(310px,370px)_max-content_minmax(310px,400px)] xl:grid-cols-[minmax(370px,400px)_minmax(800px,max-content)_minmax(400px,470px)]">
+      <div className="mx-[5vw] grid grid-cols-1 gap-[4vh] lg:mt-[8vh] lg:ml-[7vw] lg:grid-cols-[clamp(310px,22vw,400px)_minmax(700px,max-content)_clamp(310px,22vw,470px)] lg:gap-0">
         {/* 좌측 정보 */}
-        <div className="order-2 mx-5 pt-8 lg:order-1 lg:pt-16">
+        <div className="order-2 lg:order-1">
           <ResonatorInfo resonator={resonatorDetail} />
         </div>
 
@@ -72,12 +72,12 @@ export default async function Page({ params }: Props) {
             width={718}
             height={1026}
             priority
-            className="h-[60vh] w-auto lg:h-[100vh] lg:translate-x-2 lg:translate-y-4 2xl:h-[90vh]"
+            className="h-[60vh] w-auto lg:h-[clamp(700px,90vh,1026px)] lg:-translate-y-[9vh]"
           />
         </div>
 
         {/* 우측 */}
-        <div className="order-3 mx-4 my-16 flex flex-col gap-8">
+        <div className="order-3 flex flex-col gap-8 lg:mr-[3vw] lg:w-[100%] lg:justify-self-end">
           <WeaponCard weapon={resonatorDetail.weapon} />
 
           <ResonanceChain level={resonatorDetail.resonanceChainLevel} />

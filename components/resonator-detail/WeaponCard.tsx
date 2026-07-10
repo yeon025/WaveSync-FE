@@ -37,26 +37,27 @@ const statLabels: Record<string, string> = {
 export default function WeaponCard({ weapon }: Props) {
   return (
     <section className="w-full">
-      <div className="flex justify-center gap-5">
+      <div className="flex justify-center gap-[clamp(12px,1.5vw,24px)]">
         {/* 무기 이미지 */}
         <Image
           src={weapon.imageUrl}
           alt={`${weapon.name} 무기 이미지`}
-          width={100}
-          height={100}
-          className="object-contain 2xl:h-[135px] 2xl:w-[135px]"
+          width={135}
+          height={135}
+          className="h-[clamp(80px,7vw,135px)] w-[clamp(80px,7vw,135px)] object-contain"
         />
 
         {/* 우측 정보 */}
         <div className="flex flex-1 flex-col">
           {/* 이름 */}
-          <h2 className="text-xl">{weapon.name}</h2>
+          <h2 className="text-[clamp(16px,1.4vw,24px)]">{weapon.name}</h2>
 
           {/* 레벨 + 재련 */}
-          <div className="mt-2 flex flex-wrap justify-between">
+          <div className="mt-[clamp(4px,0.5vh,8px)] flex flex-wrap justify-between">
             <p>
-              <span className="text-lg font-medium lg:text-xl">Lv. 90</span>
-              <span className="text-sm lg:text-base"> / 90</span>
+              <span className="text-[clamp(16px,1.2vw,20px)] font-medium">Lv. 90</span>
+
+              <span className="text-[clamp(12px,1vw,16px)]"> / 90</span>
             </p>
 
             <div className="flex">
@@ -69,13 +70,14 @@ export default function WeaponCard({ weapon }: Props) {
                   alt={`공명 체인 ${index + 1}`}
                   width={28}
                   height={28}
+                  className="h-[clamp(16px,1.5vw,28px)] w-[clamp(16px,1.5vw,28px)]"
                 />
               ))}
             </div>
           </div>
 
           {/* 스탯 */}
-          <div className="mt-1 flex flex-col gap-1">
+          <div className="mt-[clamp(4px,0.5vh,8px)] flex flex-col gap-[clamp(2px,0.3vh,6px)]">
             <StatBox label="공격력" value={weapon.attackValue} />
 
             <StatBox

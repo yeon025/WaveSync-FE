@@ -21,15 +21,15 @@ export default function ResonanceChain({ level }: Props) {
 
   return (
     <section className="hidden w-full lg:block">
-      <svg viewBox="-40 -40 250 600" className="h-[450px] w-auto 2xl:h-[600px]">
+      <svg viewBox="-40 -40 250 600" className="h-[clamp(400px,55vh,650px)] w-auto">
         {/* 연결선 */}
         <path
           ref={pathRef}
           d="
-              M 30 20
-              C 150 60, 175 165, 175 260
-              C 175 355, 150 460, 30 500
-            "
+            M 30 20
+            C 150 60, 175 165, 175 260
+            C 175 355, 150 460, 30 500
+          "
           stroke="#E6E6E6"
           strokeWidth="3"
           fill="none"

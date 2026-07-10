@@ -52,32 +52,32 @@ const statLabels: Record<string, string> = {
 
 export default function ResonatorInfo({ resonator }: Props) {
   return (
-    <section className="w-full">
-      <header className="flex flex-col">
-        <div className="flex items-start justify-between">
-          <Image
-            src={`/images/elements/${resonator.element}.png`}
-            alt={resonator.element}
-            width={60}
-            height={60}
-            className="h-12 w-12 lg:h-[60px] lg:w-[60px]"
-          />
+    <section className="flex w-full flex-col">
+      <div className="flex items-start justify-between">
+        <Image
+          src={`/images/elements/${resonator.element}.png`}
+          alt={resonator.element}
+          width={60}
+          height={60}
+          className="h-[clamp(40px,3.2vw,60px)] w-[clamp(40px,3.2vw,60px)]"
+        />
 
-          <h2 className="self-center text-right text-3xl lg:text-4xl">{resonator.resonatorName}</h2>
-        </div>
+        <h2 className="self-center text-right text-[clamp(24px,2vw,36px)]">
+          {resonator.resonatorName}
+        </h2>
+      </div>
 
-        <p className="ml-1 lg:ml-4">
-          <span className="text-xl font-medium">Lv. 90</span>
+      <p className="mt-[0.5vh] ml-[clamp(4px,0.8vw,16px)]">
+        <span className="text-[clamp(16px,1.2vw,20px)] font-medium">Lv. 90</span>
 
-          <span className="text-base"> / 90</span>
-        </p>
-      </header>
+        <span className="text-[clamp(12px,1vw,16px)]"> / 90</span>
+      </p>
 
       {/* 구분선 */}
-      <div className="my-2 border-t-2 border-[#848484]" />
+      <div className="my-[1vh] border-t-2 border-[#848484]" />
 
       {/* 스탯 */}
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-[0.5vh]">
         {Object.entries(resonator.stat)
           .filter(([, value]) => value !== 0)
           .map(([key, value]) => (

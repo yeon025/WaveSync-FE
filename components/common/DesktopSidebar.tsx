@@ -32,20 +32,20 @@ const navigationItems = [
 
 export default function DesktopSidebar({ active, userResonatorId }: Props) {
   return (
-    <aside className="fixed hidden h-screen w-24 shrink-0 flex-col border-r border-white/15 lg:flex">
+    <aside className="fixed hidden h-screen w-[clamp(72px,5vw,120px)] shrink-0 flex-col border-r border-white/15 lg:flex">
       {/* 로고 */}
       <WaveSyncLogo
-        textSize="text-base"
+        textSize="text-[clamp(12px,0.8vw,16px)]"
         fontSize="font-normal"
         direction="column"
         imageSize={100}
       />
 
       {/* 구분선 */}
-      <div className="my-4 h-px bg-white/5" />
+      <div className="my-[2vh] h-px bg-white/5" />
 
       {/* 메뉴 */}
-      <nav aria-label="주요 메뉴" className="flex flex-1 flex-col gap-3 px-1">
+      <nav aria-label="주요 메뉴" className="flex flex-1 flex-col gap-[1.5vh] px-[0.3vw]">
         {navigationItems.map((item) => {
           const isActive = item.id === active;
 
@@ -54,9 +54,11 @@ export default function DesktopSidebar({ active, userResonatorId }: Props) {
               key={item.id}
               href={`/resonators/${userResonatorId}${item.href}`}
               aria-current={isActive ? "page" : undefined}
-              className={`relative flex flex-col items-center gap-1.5 rounded-2xl py-3.5 ${isActive ? "bg-[#d6b15c12]" : ""} `}
+              className={`relative flex flex-col items-center gap-[0.8vh] rounded-[clamp(12px,1vw,20px)] py-[clamp(10px,1.5vh,20px)] ${
+                isActive ? "bg-[#d6b15c12]" : ""
+              } `}
             >
-              <div className="relative h-6 w-6">
+              <div className="relative h-[clamp(20px,1.5vw,32px)] w-[clamp(20px,1.5vw,32px)]">
                 <Image
                   src={isActive ? item.icon.active : item.icon.inactive}
                   alt=""
@@ -67,15 +69,15 @@ export default function DesktopSidebar({ active, userResonatorId }: Props) {
               </div>
 
               <span
-                className={`text-center text-xs font-medium ${
+                className={`text-center text-[clamp(10px,0.7vw,14px)] font-medium ${
                   isActive ? "text-[#d6b15c]" : "text-[#4e4f5c]"
-                }`}
+                } `}
               >
                 {item.label}
               </span>
 
               {isActive && (
-                <div className="absolute top-[18px] left-0 h-10 w-[3px] rounded-r-full bg-[#d6b15c]" />
+                <div className="absolute top-[2vh] left-0 h-[clamp(24px,4vh,42px)] w-[clamp(2px,0.15vw,4px)] rounded-r-full bg-[#d6b15c]" />
               )}
             </Link>
           );
