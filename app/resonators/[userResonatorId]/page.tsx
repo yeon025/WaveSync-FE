@@ -51,39 +51,46 @@ export default async function Page({ params }: Props) {
   const { userResonatorId } = await params;
 
   return (
-    <main>
+    <main className="relative min-h-screen">
       {/* 모바일 Sidebar */}
       <MobileSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
       {/* 데스크탑 Sidebar */}
       <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
-      <div className="mx-[5vw] grid grid-cols-1 gap-[4vh] lg:mt-[8vh] lg:ml-[8vw] lg:grid-cols-[clamp(310px,22vw,400px)_minmax(760px,max-content)_clamp(400px,20vw,470px)_10vw] lg:gap-0">
+      {/* 캐릭터 이미지 */}
+      <div className="relative flex justify-center lg:pointer-events-none lg:absolute lg:left-1/2 lg:z-0 lg:-translate-x-1/2">
+        <Image
+          src={resonatorDetail.standingImageUrl}
+          alt={resonatorDetail.resonatorName}
+          width={718}
+          height={1026}
+          priority
+          className="h-auto w-[100vw] object-contain lg:h-[clamp(500px,80vh,1026px)] lg:w-auto"
+        />
+      </div>
+
+      {/* 좌우 레이아웃 */}
+      <div className="mx-[5vw] grid grid-cols-1 gap-[4vh] lg:ml-[7vw] lg:grid-cols-[clamp(310px,22vw,400px)_1fr_clamp(400px,20vw,470px)] lg:gap-0 lg:pt-[8vh]">
         {/* 좌측 정보 */}
         <div className="order-2 lg:order-1">
           <ResonatorInfo resonator={resonatorDetail} />
         </div>
 
-        {/* 중앙 캐릭터 */}
-        <div className="order-1 flex justify-center lg:order-2">
-          <Image
-            src={resonatorDetail.standingImageUrl}
-            alt={resonatorDetail.resonatorName}
-            width={718}
-            height={1026}
-            priority
-            className="h-auto max-h-[80vh] w-[90vw] object-contain lg:h-[clamp(500px,80vh,1026px)] lg:w-auto"
-          />
-        </div>
+        {/* 중앙 빈 영역 - 이미지 자리 */}
+        <div className="hidden lg:order-2 lg:block" />
 
-        {/* 우측 */}
-        <div className="order-3 flex flex-col gap-8 lg:w-[100%]">
+        {/* 우측 정보 */}
+        <div className="order-3 flex flex-col gap-8 lg:w-full">
           <WeaponCard weapon={resonatorDetail.weapon} />
 
           <ResonanceChain level={resonatorDetail.resonanceChainLevel} />
-
-          <MobileResonanceChain level={resonatorDetail.resonanceChainLevel} />
         </div>
+      </div>
+
+      {/* 모바일 */}
+      <div className="flex flex-col gap-8 px-5">
+        <MobileResonanceChain level={resonatorDetail.resonanceChainLevel} />
       </div>
     </main>
   );
