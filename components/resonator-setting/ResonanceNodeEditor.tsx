@@ -61,7 +61,7 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
 
   return (
     <section className="flex w-full flex-col px-4 lg:w-[550px] lg:px-10">
-      <h1 className="text-2xl font-bold lg:text-3xl">공명 노드</h1>
+      <h1 className="text-2xl lg:text-3xl">공명 노드</h1>
 
       <div className="mt-6 rounded-[10px] border border-[#848484] pb-8">
         <svg viewBox="-40 130 600 430" className="lg:100 w-auto origin-top">
@@ -128,7 +128,7 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
         </svg>
 
         {selectedNode && (
-          <p className="text-center text-lg lg:text-2xl">
+          <p className="text-center text-base md:text-xl">
             {statLabels[selectedNode.type] ?? selectedNode.type}
             {getParticle(statLabels[selectedNode.type] ?? selectedNode.type)}
             &nbsp;

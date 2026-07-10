@@ -84,7 +84,7 @@ export default function WeaponEditor({ weapon }: Props) {
 
   return (
     <section className="flex w-full flex-col px-4 lg:w-[550px] lg:px-10">
-      <h1 className="text-2xl font-bold text-white lg:text-3xl">무기 재련</h1>
+      <h1 className="text-2xl text-white lg:text-3xl">무기 재련</h1>
 
       <div className="relative mt-6 w-full rounded-[10px] border border-[#848484] px-4 py-8">
         {/* 무기 이미지 */}
@@ -123,7 +123,7 @@ export default function WeaponEditor({ weapon }: Props) {
         </div>
 
         {/* 효과 */}
-        <p className="mt-8 text-center text-lg lg:mt-12 lg:text-2xl">
+        <p className="mt-8 text-center text-base md:text-xl lg:mt-12">
           {statLabels[weapon.refineType] ?? weapon.refineType}
           {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)}
           &nbsp;
