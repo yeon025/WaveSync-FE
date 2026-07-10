@@ -58,7 +58,7 @@ export default async function Page({ params }: Props) {
       {/* 데스크탑 Sidebar */}
       <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
-      <div className="mx-[5vw] grid grid-cols-1 gap-[4vh] lg:mt-[8vh] lg:ml-[7vw] lg:grid-cols-[clamp(310px,22vw,400px)_minmax(600px,max-content)_clamp(400px,20vw,470px)] lg:gap-0">
+      <div className="mx-[5vw] grid grid-cols-1 gap-[4vh] lg:mt-[8vh] lg:ml-[8vw] lg:grid-cols-[clamp(310px,22vw,400px)_minmax(760px,max-content)_clamp(400px,20vw,470px)_10vw] lg:gap-0">
         {/* 좌측 정보 */}
         <div className="order-2 lg:order-1">
           <ResonatorInfo resonator={resonatorDetail} />
@@ -72,12 +72,12 @@ export default async function Page({ params }: Props) {
             width={718}
             height={1026}
             priority
-            className="h-[clamp(500px,80vh,1026px)] w-auto max-w-[90vw] object-contain"
+            className="h-auto max-h-[80vh] w-[90vw] object-contain lg:h-[clamp(500px,80vh,1026px)] lg:w-auto"
           />
         </div>
 
         {/* 우측 */}
-        <div className="order-3 flex flex-col gap-8 lg:mr-[3vw] lg:w-[100%] lg:justify-self-end">
+        <div className="order-3 flex flex-col gap-8 lg:w-[100%]">
           <WeaponCard weapon={resonatorDetail.weapon} />
 
           <ResonanceChain level={resonatorDetail.resonanceChainLevel} />
