@@ -71,7 +71,7 @@ export default async function Page({ params }: Props) {
       </div>
 
       {/* 좌우 레이아웃 */}
-      <div className="mx-[5vw] grid grid-cols-1 gap-[4vh] lg:ml-[7vw] lg:grid-cols-[clamp(310px,22vw,400px)_1fr_clamp(400px,20vw,470px)] lg:gap-0 lg:pt-[8vh]">
+      <div className="mx-[5vw] grid grid-cols-1 gap-[4vh] lg:ml-[7vw] lg:grid-cols-[clamp(250px,22vw,400px)_1fr_clamp(330px,20vw,400px)] lg:gap-0 lg:pt-[8vh]">
         {/* 좌측 정보 */}
         <div className="order-2 lg:order-1">
           <ResonatorInfo resonator={resonatorDetail} />

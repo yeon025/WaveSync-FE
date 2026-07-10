@@ -50,14 +50,14 @@ export default function WeaponCard({ weapon }: Props) {
         {/* 우측 정보 */}
         <div className="flex flex-1 flex-col">
           {/* 이름 */}
-          <h2 className="text-[clamp(16px,1.4vw,24px)]">{weapon.name}</h2>
+          <h2 className="text-[clamp(16px,1.5vw,20px)]">{weapon.name}</h2>
 
           {/* 레벨 + 재련 */}
           <div className="mt-[clamp(4px,0.5vh,8px)] flex flex-wrap justify-between">
             <p>
-              <span className="text-[clamp(16px,1.2vw,20px)] font-medium">Lv. 90</span>
+              <span className="text-[clamp(14px,1.2vw,18px)] font-medium">Lv. 90</span>
 
-              <span className="text-[clamp(12px,1vw,16px)]"> / 90</span>
+              <span className="text-[clamp(10px,1vw,14px)]"> / 90</span>
             </p>
 
             <div className="flex">
