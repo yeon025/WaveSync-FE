@@ -67,10 +67,9 @@ export default function WeaponCard({ weapon }: Props) {
                   src={
                     index < weapon.refineLevel ? "/star-node-active.svg" : "/star-node-deactive.svg"
                   }
-                  alt={`공명 체인 ${index + 1}`}
+                  alt={`재련 ${index + 1}`}
                   width={28}
                   height={28}
-                  className="h-[clamp(16px,1.5vw,28px)] w-[clamp(16px,1.5vw,28px)]"
                 />
               ))}
             </div>

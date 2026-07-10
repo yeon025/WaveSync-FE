@@ -9,9 +9,9 @@ export default function StatBox({ label, value, className = "" }: Props) {
     <div
       className={`flex h-9 items-center justify-between rounded-xl border-2 border-[#848484] px-6 ${className} `}
     >
-      <span className="text-base xl:text-lg">{label}</span>
+      <span className="text-[clamp(14px,1.1vw,20px)]">{label}</span>
 
-      <span className="text-base xl:text-lg">{value}</span>
+      <span className="text-[clamp(14px,1.1vw,20px)]">{value}</span>
     </div>
   );
 }
