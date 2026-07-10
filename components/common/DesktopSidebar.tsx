@@ -32,22 +32,17 @@ const navigationItems = [
 
 export default function DesktopSidebar({ active, userResonatorId }: Props) {
   return (
-    <aside
-      aria-label="데스크톱 사이드바 내비게이션"
-      className="sticky top-0 hidden h-screen w-24 shrink-0 flex-col border-r border-white/15 lg:flex"
-    >
+    <aside className="fixed hidden h-screen w-24 shrink-0 flex-col border-r border-white/15 lg:flex">
       {/* 로고 */}
       <WaveSyncLogo
-        textSizeClass="text-base"
-        fontSizeClass="font-normal"
+        textSize="text-base"
+        fontSize="font-normal"
         direction="column"
-        imageSize={20}
+        imageSize={100}
       />
 
       {/* 구분선 */}
-      <div className="px-3 py-4">
-        <div className="h-px w-full bg-white/5" />
-      </div>
+      <div className="my-4 h-px bg-white/5" />
 
       {/* 메뉴 */}
       <nav aria-label="주요 메뉴" className="flex flex-1 flex-col gap-3 px-1">
@@ -59,7 +54,7 @@ export default function DesktopSidebar({ active, userResonatorId }: Props) {
               key={item.id}
               href={`/resonators/${userResonatorId}${item.href}`}
               aria-current={isActive ? "page" : undefined}
-              className={`relative flex flex-col items-center gap-1.5 rounded-2xl px-1 py-3.5 ${isActive ? "bg-[#d6b15c12]" : ""} `}
+              className={`relative flex flex-col items-center gap-1.5 rounded-2xl py-3.5 ${isActive ? "bg-[#d6b15c12]" : ""} `}
             >
               <div className="relative h-6 w-6">
                 <Image

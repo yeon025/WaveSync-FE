@@ -32,22 +32,12 @@ const navigationItems = [
 
 export default function MobileSidebar({ active, userResonatorId }: Props) {
   return (
-    <aside
-      aria-label="모바일 사이드바 내비게이션"
-      className="w-full border-b border-white/15 lg:hidden"
-    >
+    <aside className="lg:hidden">
       {/* 로고 */}
-      <div className="flex justify-center">
-        <WaveSyncLogo
-          textSizeClass="text-2xl"
-          fontSizeClass="font-normal"
-          direction="row"
-          imageSize={20}
-        />
-      </div>
+      <WaveSyncLogo textSize="text-2xl" fontSize="font-normal" direction="row" imageSize={100} />
 
       {/* 메뉴 */}
-      <nav aria-label="주요 메뉴" className="flex gap-2 overflow-x-auto px-3 py-3">
+      <nav className="flex gap-3 px-3">
         {navigationItems.map((item) => {
           const isActive = item.id === active;
 
@@ -56,22 +46,18 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
               key={item.id}
               href={`/resonators/${userResonatorId}${item.href}`}
               aria-current={isActive ? "page" : undefined}
-              className={`relative flex shrink-0 flex-col items-center gap-1.5 rounded-2xl px-1 py-3.5 ${isActive ? "bg-[#d6b15c12]" : ""} `}
+              className={`relative flex flex-col items-center gap-1.5 rounded-2xl p-3 ${isActive ? "bg-[#d6b15c12]" : ""} `}
             >
-              <div className="relative h-6 w-6">
-                <Image
-                  src={isActive ? item.icon.active : item.icon.inactive}
-                  alt=""
-                  aria-hidden
-                  fill
-                  className="object-contain"
-                />
-              </div>
+              <Image
+                src={isActive ? item.icon.active : item.icon.inactive}
+                alt=""
+                aria-hidden
+                width={24}
+                height={24}
+              />
 
               <span
-                className={`text-center text-xs font-medium ${
-                  isActive ? "text-[#d6b15c]" : "text-[#4e4f5c]"
-                }`}
+                className={`text-xs font-medium ${isActive ? "text-[#d6b15c]" : "text-[#4e4f5c]"}`}
               >
                 {item.label}
               </span>

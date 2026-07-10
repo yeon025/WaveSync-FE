@@ -36,18 +36,16 @@ const statLabels: Record<string, string> = {
 
 export default function WeaponCard({ weapon }: Props) {
   return (
-    <section aria-label="무기 정보" className="w-full">
+    <section className="w-full">
       <div className="flex justify-center gap-5">
         {/* 무기 이미지 */}
-        <div className="shrink-0">
-          <Image
-            src={weapon.imageUrl}
-            alt={`${weapon.name} 무기 이미지`}
-            width={150}
-            height={150}
-            className="h-[110px] w-[110px] object-contain lg:h-[135px] lg:w-[135px]"
-          />
-        </div>
+        <Image
+          src={weapon.imageUrl}
+          alt={`${weapon.name} 무기 이미지`}
+          width={100}
+          height={100}
+          className="object-contain 2xl:h-[135px] 2xl:w-[135px]"
+        />
 
         {/* 우측 정보 */}
         <div className="flex flex-1 flex-col">
@@ -55,7 +53,7 @@ export default function WeaponCard({ weapon }: Props) {
           <h2 className="text-xl">{weapon.name}</h2>
 
           {/* 레벨 + 재련 */}
-          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="mt-2 flex flex-wrap justify-between">
             <p>
               <span className="text-lg font-medium lg:text-xl">Lv. 90</span>
               <span className="text-sm lg:text-base"> / 90</span>

@@ -81,29 +81,27 @@ const resonators: ResonatorSummaryResponse[] = [
 
 export default function Page() {
   return (
-    <main className="min-h-screen">
-      <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
-        {/* 로고 */}
-        <WaveSyncLogo imageSize={25} direction="row" textSizeClass="text-4xl" />
+    <main className="mx-auto px-6 py-10 lg:px-8">
+      {/* 로고 */}
+      <WaveSyncLogo imageSize={100} direction="row" textSize="text-4xl" fontSize="font-normal" />
 
-        <div className="my-8 flex items-center justify-end gap-8">
-          {/* 삭제 버튼 */}
-          <IconButton
-            icon="/trash-bin.svg"
-            alt="삭제"
-            size={38}
-            // onClick={handleDelete}
-          />
+      <div className="my-8 flex items-center justify-end gap-8">
+        {/* 삭제 버튼 */}
+        <IconButton
+          icon="/trash-bin.svg"
+          alt="삭제"
+          size={38}
+          // onClick={handleDelete}
+        />
 
-          {/* 업로드 페이지로 이동 버튼 */}
-          <Link href="/upload">
-            <Button>공명자 정보 가져오기</Button>
-          </Link>
-        </div>
-
-        {/* 카드 그리드 */}
-        <ResonatorGrid resonators={resonators} />
+        {/* 업로드 페이지로 이동 버튼 */}
+        <Link href="/upload">
+          <Button>공명자 정보 가져오기</Button>
+        </Link>
       </div>
+
+      {/* 카드 그리드 */}
+      <ResonatorGrid resonators={resonators} />
     </main>
   );
 }

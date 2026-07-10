@@ -2,37 +2,29 @@ import Image from "next/image";
 
 interface Props {
   resonator: ResonatorSummaryResponse;
-  className?: string;
-  onClick?: () => void;
 }
 
-export default function ResonatorCard({ resonator, className = "", onClick }: Props) {
+export default function ResonatorCard({ resonator }: Props) {
   return (
-    <article
-      onClick={onClick}
-      className={
-        "w-full cursor-pointer transition-transform duration-200 select-none hover:scale-105 " +
-        className
-      }
-    >
-      {/* 이미지 */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-md">
-        <Image
-          src={resonator.thumbnailImageUrl}
-          alt={resonator.resonatorName}
-          fill
-          className={
-            "object-cover " + (resonator.userResonatorId === null ? "opacity-60 grayscale" : "")
-          }
-        />
-      </div>
+    <article className="mx-auto w-[var(--card)] w-full max-w-[117px] cursor-pointer transition-transform duration-100 hover:scale-105">
+      <Image
+        src={resonator.thumbnailImageUrl}
+        alt={resonator.resonatorName}
+        width={117}
+        height={117}
+        priority
+        className={
+          "object-contain " + (resonator.userResonatorId === null ? "opacity-60 grayscale" : "")
+        }
+      />
 
-      {/* 이름 */}
       <div
-        className="mt-1 flex items-center justify-center border-1"
-        style={{ borderColor: resonator.rarity == 4 ? "#9d6bb9" : "#FFF691" }}
+        className="mt-1 flex justify-center border"
+        style={{
+          borderColor: resonator.rarity === 4 ? "#9d6bb9" : "#FFF691",
+        }}
       >
-        <span className="truncate text-sm lg:text-base">{resonator.resonatorName}</span>
+        <span className="truncate text-sm xl:text-base">{resonator.resonatorName}</span>
       </div>
     </article>
   );

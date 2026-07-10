@@ -7,9 +7,7 @@ interface Props {
 export default function MobileResonanceChain({ level }: Props) {
   return (
     <section aria-labelledby="mobile-resonance-chain-title" className="w-full py-6 lg:hidden">
-      <h2 id="mobile-resonance-chain-title" className="mb-4 text-center text-xl font-medium">
-        공명 체인
-      </h2>
+      <h2 className="mb-4 text-center text-xl font-medium">공명 체인</h2>
 
       <div className="flex justify-center gap-1">
         {Array.from({ length: 6 }).map((_, index) => (

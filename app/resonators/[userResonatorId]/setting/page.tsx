@@ -119,7 +119,7 @@ export default async function Page({ params }: Props) {
         {/* 데스크탑 Sidebar */}
         <DesktopSidebar active="resonator-setting" userResonatorId={userResonatorId} />
 
-        <div className="flex w-full flex-col items-center justify-center gap-10 py-10 lg:flex-row lg:py-20">
+        <div className="flex w-full flex-col items-center justify-center gap-10 py-10 lg:my-20 lg:ml-25 lg:flex-row">
           <ResonanceNodeEditor nodes={data.nodes} />
           <WeaponEditor weapon={data.weapon} />
         </div>

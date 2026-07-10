@@ -7,7 +7,7 @@ import IconButton from "@/components/common/IconButton";
 
 export default function Upload() {
   return (
-    <main className="relative flex min-h-screen items-center justify-center px-4">
+    <main className="flex min-h-screen items-center justify-center">
       {/* 닫기 버튼 */}
       <Link href="/" className="absolute top-6 right-6" aria-label="닫기">
         <IconButton icon="/close.svg" alt="닫기" size={26} />
@@ -25,16 +25,14 @@ export default function Upload() {
         </h1>
 
         {/* 예시 이미지 */}
-        <section
-          aria-label="프로필 예시 이미지"
-          className="relative mx-auto mt-6 aspect-[819/461] w-full max-w-2xl"
-        >
+        <section className="mx-6 mt-6">
           <Image
             src="/images/example/profile.png"
             alt="프로필 예시"
-            fill
+            width={1638}
+            height={922}
             priority
-            className="rounded-lg"
+            className="mx-auto h-auto w-full max-w-2xl rounded-lg"
           />
         </section>
 

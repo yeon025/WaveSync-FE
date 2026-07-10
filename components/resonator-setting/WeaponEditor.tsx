@@ -89,17 +89,11 @@ export default function WeaponEditor({ weapon }: Props) {
       <div className="relative mt-6 w-full rounded-[10px] border border-[#848484] px-4 py-8">
         {/* 무기 이미지 */}
         <div className="flex justify-center">
-          <Image
-            src={weapon.imageUrl}
-            alt="weapon"
-            width={160}
-            height={160}
-            className="lg:h-[223px] lg:w-[223px]"
-          />
+          <Image src={weapon.imageUrl} alt="weapon" width={160} height={160} />
         </div>
 
         {/* 재련 단계 */}
-        <div className="mt-10 flex items-center justify-center gap-3 lg:mt-12">
+        <div className="mt-10 flex items-center justify-center gap-3">
           <button
             onClick={decrease}
             className="cursor-pointer text-3xl font-bold transition-colors hover:text-yellow-400 lg:text-4xl"
@@ -129,7 +123,7 @@ export default function WeaponEditor({ weapon }: Props) {
         </div>
 
         {/* 효과 */}
-        <p className="mt-8 px-4 text-center text-lg lg:mt-12 lg:text-2xl">
+        <p className="mt-8 text-center text-lg lg:mt-12 lg:text-2xl">
           {statLabels[weapon.refineType] ?? weapon.refineType}
           {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)}
           &nbsp;

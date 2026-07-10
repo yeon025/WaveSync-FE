@@ -52,9 +52,9 @@ const statLabels: Record<string, string> = {
 
 export default function ResonatorInfo({ resonator }: Props) {
   return (
-    <section aria-label="캐릭터 개요" className="w-full">
-      <header className="flex flex-col gap-0">
-        <div className="flex items-start justify-between gap-4">
+    <section className="w-full">
+      <header className="flex flex-col">
+        <div className="flex items-start justify-between">
           <Image
             src={`/images/elements/${resonator.element}.png`}
             alt={resonator.element}

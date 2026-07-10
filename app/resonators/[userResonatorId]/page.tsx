@@ -51,33 +51,33 @@ export default async function Page({ params }: Props) {
   const { userResonatorId } = await params;
 
   return (
-    <main className="relative">
+    <main>
       {/* 모바일 Sidebar */}
       <MobileSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-[96px_minmax(350px,390px)_max-content_470px] 2xl:grid-cols-[96px_minmax(390px,420px)_minmax(850px,max-content)_470px]">
-        {/* 데스크탑 Sidebar */}
-        <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
+      {/* 데스크탑 Sidebar */}
+      <DesktopSidebar active="resonator-info" userResonatorId={userResonatorId} />
 
+      <div className="grid grid-cols-1 lg:ml-35 lg:grid-cols-[minmax(310px,370px)_max-content_minmax(310px,400px)] xl:grid-cols-[minmax(370px,400px)_minmax(800px,max-content)_minmax(400px,470px)]">
         {/* 좌측 정보 */}
-        <div className="order-2 flex min-w-0 justify-center px-4 pt-8 lg:order-1 lg:pt-16 lg:pl-10">
+        <div className="order-2 mx-5 pt-8 lg:order-1 lg:pt-16">
           <ResonatorInfo resonator={resonatorDetail} />
         </div>
 
         {/* 중앙 캐릭터 */}
-        <div className="relative order-1 flex justify-center lg:order-2 lg:-translate-y-10">
+        <div className="order-1 flex justify-center lg:order-2">
           <Image
             src={resonatorDetail.standingImageUrl}
             alt={resonatorDetail.resonatorName}
             width={718}
             height={1026}
             priority
-            className="pointer-events-none h-[60vh] w-auto select-none sm:h-[70vh] lg:h-[100vh] lg:translate-x-2 lg:translate-y-14 2xl:h-[90vh]"
+            className="h-[60vh] w-auto lg:h-[100vh] lg:translate-x-2 lg:translate-y-4 2xl:h-[90vh]"
           />
         </div>
 
         {/* 우측 */}
-        <div className="order-3 flex flex-col gap-8 px-6 pt-16 lg:pr-16 lg:pl-0">
+        <div className="order-3 mx-4 my-16 flex flex-col gap-8">
           <WeaponCard weapon={resonatorDetail.weapon} />
 
           <ResonanceChain level={resonatorDetail.resonanceChainLevel} />
