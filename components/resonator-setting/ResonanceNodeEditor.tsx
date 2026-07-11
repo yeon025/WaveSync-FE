@@ -1,53 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { statLabels } from "@/utils/stat";
+import { getParticle } from "@/utils/text";
 
 interface Props {
   nodes: ResonanceNode[];
+  onChange: (nodes: ResonanceNode[]) => void;
 }
-
-const statLabels: Record<string, string> = {
-  hp_percent: "HP",
-  attack_percent: "공격력",
-  defense_percent: "방어력",
-  energy_regen: "공명 효율",
-  critical_rate: "크리티컬",
-  critical_damage: "크리티컬 피해",
-  resonance_skill_damage_bonus: "공명 스킬 피해 보너스",
-  basic_attack_damage_bonus: "기본 공격 피해 보너스",
-  heavy_attack_damage_bonus: "강공격 피해 보너스",
-  resonance_liberation_damage_bonus: "공명 해방 피해 보너스",
-  glacio_damage_bonus: "응결 피해 보너스",
-  fusion_damage_bonus: "융융 피해 보너스",
-  conducto_damage_bonus: "전도 피해 보너스",
-  aero_damage_bonus: "기류 피해 보너스",
-  spectra_damage_bonus: "회절 피해 보너스",
-  havoc_damage_bonus: "인멸 피해 보너스",
-  healing_bonus: "치료 효과 보너스",
-};
-
-const getParticle = (word: string) => {
-  if (!word) return "";
-
-  const lastChar = word[word.length - 1];
-  const code = lastChar.charCodeAt(0);
-
-  // 한글 범위가 아닐 경우 기본 "가"
-  if (code < 0xac00 || code > 0xd7a3) return "가";
-
-  // 한글 종성 여부 계산
-  const hasBatchim = (code - 0xac00) % 28 !== 0;
-
-  return hasBatchim ? "이" : "가";
-};
 
 const branchOrder = ["left_outer", "left_inner", "center", "right_inner", "right_outer"] as const;
 
-export default function ResonanceNodeEditor({ nodes }: Props) {
-  const [selectedNode, setSelectedNode] = useState<{
-    type: string;
-    value: number;
-  } | null>(null);
+export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
+  const [selectedNode, setSelectedNode] = useState<ResonanceNode | null>(null);
 
   const pathRef = useRef<SVGPathElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
@@ -61,11 +26,37 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
     setPoints(Array.from({ length: 5 }, (_, i) => path.getPointAtLength((totalLength * i) / 4)));
   }, []);
 
+  // 부모 상태가 변경되면 selectedNode도 최신 상태로 유지
+  useEffect(() => {
+    if (!selectedNode) return;
+
+    const updated = nodes.find(
+      (node) =>
+        node.branchPosition === selectedNode.branchPosition &&
+        node.nodePosition === selectedNode.nodePosition,
+    );
+
+    setSelectedNode(updated ?? null);
+  }, [nodes]);
+
+  const handleToggleNode = () => {
+    if (!selectedNode) return;
+
+    const updatedNodes = nodes.map((node) =>
+      node.branchPosition === selectedNode.branchPosition &&
+      node.nodePosition === selectedNode.nodePosition
+        ? { ...node, active: !node.active }
+        : node,
+    );
+
+    onChange(updatedNodes);
+  };
+
   return (
-    <section className="flex w-full flex-col px-4 lg:w-[550px] lg:px-10">
+    <section className="flex flex-col lg:w-[470px]">
       <h1 className="text-2xl lg:text-3xl">공명 노드</h1>
 
-      <div className="mt-6 rounded-[10px] border border-[#848484] pb-8">
+      <div className="mt-3 rounded-[10px] border border-[#848484] pb-8">
         <svg viewBox="-40 130 600 430" className="lg:100 w-auto origin-top">
           {/* 연결선 */}
           <path
@@ -123,12 +114,8 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
                     y={point.y - 150 - i * 110}
                     width="80"
                     height="80"
-                    style={{ cursor: "pointer" }}
-                    onClick={() =>
-                      setSelectedNode(
-                        node.stat ? { type: node.stat.type, value: node.stat.value } : null,
-                      )
-                    }
+                    className="cursor-pointer"
+                    onClick={() => setSelectedNode(node)}
                   />
                 ))}
               </g>
@@ -137,12 +124,25 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
         </svg>
 
         {selectedNode && (
-          <p className="text-center text-base md:text-xl">
-            {statLabels[selectedNode.type] ?? selectedNode.type}
-            {getParticle(statLabels[selectedNode.type] ?? selectedNode.type)}
-            &nbsp;
-            {selectedNode.value}% 증가된다.
-          </p>
+          <div className="flex items-center justify-center gap-4">
+            <button onClick={handleToggleNode} className="flex cursor-pointer items-center gap-2">
+              <span
+                className={`flex h-5 w-5 items-center justify-center rounded-full border-2 transition-colors ${
+                  selectedNode.active ? "border-yellow-400" : "border-gray-400"
+                }`}
+              >
+                {selectedNode.active && <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />}
+              </span>
+            </button>
+
+            {selectedNode.stat && (
+              <p className="text-base md:text-xl">
+                {statLabels[selectedNode.stat.type] ?? selectedNode.stat.type}
+                {getParticle(statLabels[selectedNode.stat.type] ?? selectedNode.stat.type)}{" "}
+                {selectedNode.stat.value}% 증가된다.
+              </p>
+            )}
+          </div>
         )}
       </div>
     </section>

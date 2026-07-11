@@ -90,3 +90,22 @@ export async function createResonator(file: File): Promise<ApiResponse<CreateRes
 
   return result;
 }
+
+export async function updateResonator(
+  userResonatorId: number,
+  body: UpdateResonatorRequest,
+): Promise<ApiResponse<void>> {
+  const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/setting`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  const result = await response.json();
+
+  console.log(result);
+
+  return result;
+}

@@ -32,7 +32,7 @@ const navigationItems = [
 
 export default function MobileSidebar({ active, userResonatorId }: Props) {
   return (
-    <aside className="lg:hidden">
+    <aside className="mb-5 lg:hidden">
       {/* 로고 */}
       <WaveSyncLogo textSize="text-2xl" fontSize="font-normal" direction="row" imageSize={100} />
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { statLabels } from "@/utils/stat";
+import { getParticle } from "@/utils/text";
 
 interface Props {
   weapon: {
@@ -13,44 +14,10 @@ interface Props {
     refine5Value: number;
     imageUrl: string;
   };
+  onChange: (weapon: ResonatorSettingResponse["weapon"]) => void;
 }
 
-const statLabels: Record<string, string> = {
-  hp_percent: "HP",
-  attack_percent: "공격력",
-  defense_percent: "방어력",
-  energy_regen: "공명 효율",
-  critical_rate: "크리티컬",
-  critical_damage: "크리티컬 피해",
-  resonance_skill_damage_bonus: "공명 스킬 피해 보너스",
-  basic_attack_damage_bonus: "기본 공격 피해 보너스",
-  heavy_attack_damage_bonus: "강공격 피해 보너스",
-  resonance_liberation_damage_bonus: "공명 해방 피해 보너스",
-  glacio_damage_bonus: "응결 피해 보너스",
-  fusion_damage_bonus: "융융 피해 보너스",
-  conducto_damage_bonus: "전도 피해 보너스",
-  aero_damage_bonus: "기류 피해 보너스",
-  spectra_damage_bonus: "회절 피해 보너스",
-  havoc_damage_bonus: "인멸 피해 보너스",
-  healing_bonus: "치료 효과 보너스",
-};
-
-const getParticle = (word: string) => {
-  if (!word) return "";
-
-  const lastChar = word[word.length - 1];
-  const code = lastChar.charCodeAt(0);
-
-  // 한글 범위가 아닐 경우 기본 "가"
-  if (code < 0xac00 || code > 0xd7a3) return "가";
-
-  // 한글 종성 여부 계산
-  const hasBatchim = (code - 0xac00) % 28 !== 0;
-
-  return hasBatchim ? "이" : "가";
-};
-
-export default function WeaponEditor({ weapon }: Props) {
+export default function WeaponEditor({ weapon, onChange }: Props) {
   const getRefineValue = (level: number) => {
     const values = [
       weapon.refine1Value,
@@ -63,29 +30,31 @@ export default function WeaponEditor({ weapon }: Props) {
     return values[level - 1];
   };
 
-  const [level, setLevel] = useState(weapon.refineLevel);
-  const maxLevel = 5;
-  const [value, setValue] = useState(getRefineValue(weapon.refineLevel));
-
   const increase = () => {
-    const nextLevel = Math.min(level + 1, maxLevel);
+    const nextLevel = Math.min(weapon.refineLevel + 1, 5);
 
-    setLevel(nextLevel);
-    setValue(getRefineValue(nextLevel));
+    onChange({
+      ...weapon,
+      refineLevel: nextLevel,
+    });
   };
 
   const decrease = () => {
-    const nextLevel = Math.max(level - 1, 1);
+    const nextLevel = Math.max(weapon.refineLevel - 1, 1);
 
-    setLevel(nextLevel);
-    setValue(getRefineValue(nextLevel));
+    onChange({
+      ...weapon,
+      refineLevel: nextLevel,
+    });
   };
 
-  return (
-    <section className="flex w-full flex-col px-4 lg:w-[550px] lg:px-10">
-      <h1 className="text-2xl text-white lg:text-3xl">무기 재련</h1>
+  const value = getRefineValue(weapon.refineLevel);
 
-      <div className="relative mt-6 w-full rounded-[10px] border border-[#848484] px-4 py-8">
+  return (
+    <section className="flex flex-col lg:w-[470px]">
+      <h1 className="text-2xl lg:text-3xl">무기 재련</h1>
+
+      <div className="relative mt-3 rounded-[10px] border border-[#848484] px-4 py-8">
         {/* 무기 이미지 */}
         <div className="flex justify-center">
           <img src={weapon.imageUrl} alt="weapon" width={160} height={160} />
@@ -104,7 +73,9 @@ export default function WeaponEditor({ weapon }: Props) {
             {Array.from({ length: 5 }).map((_, index) => (
               <img
                 key={index}
-                src={index < level ? "/star-node-active.svg" : "/star-node-deactive.svg"}
+                src={
+                  index < weapon.refineLevel ? "/star-node-active.svg" : "/star-node-deactive.svg"
+                }
                 alt={`무기 재련 ${index + 1}`}
                 width={40}
                 height={40}
@@ -124,9 +95,7 @@ export default function WeaponEditor({ weapon }: Props) {
         {/* 효과 */}
         <p className="mt-8 text-center text-base md:text-xl lg:mt-12">
           {statLabels[weapon.refineType] ?? weapon.refineType}
-          {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)}
-          &nbsp;
-          {value}% 증가된다.
+          {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)} {value}% 증가된다.
         </p>
       </div>
     </section>
