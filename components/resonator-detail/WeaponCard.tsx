@@ -1,4 +1,3 @@
-import Image from "next/image";
 import StatBox from "@/components/common/StatBox";
 
 interface Props {
@@ -39,7 +38,7 @@ export default function WeaponCard({ weapon }: Props) {
     <section className="w-full">
       <div className="flex justify-center gap-[clamp(12px,1.5vw,24px)]">
         {/* 무기 이미지 */}
-        <Image
+        <img
           src={weapon.imageUrl}
           alt={`${weapon.name} 무기 이미지`}
           width={135}
@@ -62,7 +61,7 @@ export default function WeaponCard({ weapon }: Props) {
 
             <div className="flex">
               {Array.from({ length: 5 }).map((_, index) => (
-                <Image
+                <img
                   key={index}
                   src={
                     index < weapon.refineLevel ? "/star-node-active.svg" : "/star-node-deactive.svg"

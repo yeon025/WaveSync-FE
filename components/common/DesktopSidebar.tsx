@@ -6,7 +6,7 @@ import WaveSyncLogo from "./Logo";
 
 interface Props {
   active: "resonator-info" | "resonator-setting";
-  userResonatorId: string;
+  userResonatorId: number;
 }
 
 const navigationItems = [

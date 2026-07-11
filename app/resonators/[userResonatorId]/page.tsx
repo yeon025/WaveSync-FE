@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { getResonatorDetail } from "@/api/resonator.api";
 import ResonatorInfo from "@/components/resonator-detail/ResonatorInfo";
 import WeaponCard from "@/components/resonator-detail/WeaponCard";
 import ResonanceChain from "@/components/resonator-detail/ResonanceChain";
@@ -6,49 +6,13 @@ import MobileResonanceChain from "@/components/resonator-detail/MobileResonanceC
 import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
 
-const resonatorDetail: ResonatorDetailResponse = {
-  userResonatorId: 4,
-  resonatorName: "기염",
-  element: "aero",
-  standingImageUrl: "/images/standings/기염-standing.png",
-  resonanceChainLevel: 4,
-  weapon: {
-    name: "푸른 의지",
-    attackValue: 587,
-    main: {
-      type: "critical_rate",
-      value: 24.3,
-    },
-    refineLevel: 1,
-    imageUrl: "/images/weapons/푸른 의지.png",
-  },
-  stat: {
-    hp: 12354,
-    attack: 154,
-    defense: 124,
-    energyRegen: 110,
-    criticalRate: 70,
-    criticalDamage: 305,
-    resonanceSkillDamageBonus: 50,
-    basicAttackDamageBonus: 12,
-    heavyAttackDamageBonus: 10,
-    resonanceLiberationDamageBonus: 10,
-    glacioDamageBonus: 70,
-    fusionDamageBonus: 0,
-    conductoDamageBonus: 0,
-    aeroDamageBonus: 0,
-    spectraDamageBonus: 0,
-    havocDamageBonus: 0,
-    healingBonus: 0,
-  },
-};
-
 interface Props {
-  params: Promise<{ userResonatorId: string }>;
+  params: Promise<{ userResonatorId: number }>;
 }
 
 export default async function Page({ params }: Props) {
   const { userResonatorId } = await params;
+  const resonatorDetail = await getResonatorDetail(userResonatorId);
 
   return (
     <main className="relative min-h-screen">
@@ -60,12 +24,11 @@ export default async function Page({ params }: Props) {
 
       {/* 캐릭터 이미지 */}
       <div className="relative flex justify-center lg:pointer-events-none lg:absolute lg:left-1/2 lg:z-0 lg:-translate-x-1/2">
-        <Image
+        <img
           src={resonatorDetail.standingImageUrl}
           alt={resonatorDetail.resonatorName}
           width={718}
           height={1026}
-          priority
           className="h-auto w-[100vw] object-contain lg:h-[clamp(500px,80vh,1026px)] lg:w-auto"
         />
       </div>
