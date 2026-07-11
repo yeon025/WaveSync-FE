@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
 interface Props {
@@ -89,7 +88,7 @@ export default function WeaponEditor({ weapon }: Props) {
       <div className="relative mt-6 w-full rounded-[10px] border border-[#848484] px-4 py-8">
         {/* 무기 이미지 */}
         <div className="flex justify-center">
-          <Image src={weapon.imageUrl} alt="weapon" width={160} height={160} />
+          <img src={weapon.imageUrl} alt="weapon" width={160} height={160} />
         </div>
 
         {/* 재련 단계 */}
@@ -103,7 +102,7 @@ export default function WeaponEditor({ weapon }: Props) {
 
           <div className="flex gap-1">
             {Array.from({ length: 5 }).map((_, index) => (
-              <Image
+              <img
                 key={index}
                 src={index < level ? "/star-node-active.svg" : "/star-node-deactive.svg"}
                 alt={`무기 재련 ${index + 1}`}

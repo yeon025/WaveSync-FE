@@ -41,6 +41,8 @@ const getParticle = (word: string) => {
   return hasBatchim ? "이" : "가";
 };
 
+const branchOrder = ["left_outer", "left_inner", "center", "right_inner", "right_outer"] as const;
+
 export default function ResonanceNodeEditor({ nodes }: Props) {
   const [selectedNode, setSelectedNode] = useState<{
     type: string;
@@ -81,10 +83,17 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
 
           {/* 노드와 직선 */}
           {points.map((point, index) => {
-            const rowNodes = nodes.slice(index * 2, index * 2 + 2);
+            const branchPosition = branchOrder[index];
+
+            const rowNodes = nodes
+              .filter((node) => node.branchPosition === branchPosition)
+              .sort((a, b) => {
+                const order = { middle: 0, top: 1 };
+                return order[a.nodePosition] - order[b.nodePosition];
+              });
 
             return (
-              <g key={index}>
+              <g key={branchPosition}>
                 {/* 직선 */}
                 <line
                   x1={point.x}
@@ -108,7 +117,7 @@ export default function ResonanceNodeEditor({ nodes }: Props) {
                 {/* 서브 노드 */}
                 {rowNodes.map((node, i) => (
                   <image
-                    key={i}
+                    key={`${node.branchPosition}-${node.nodePosition}`}
                     href={node.active ? "/star-node-active.svg" : "/star-node-deactive.svg"}
                     x={point.x - 40}
                     y={point.y - 150 - i * 110}
