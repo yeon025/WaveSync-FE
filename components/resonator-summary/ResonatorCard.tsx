@@ -7,12 +7,11 @@ interface Props {
 export default function ResonatorCard({ resonator }: Props) {
   return (
     <article className="mx-auto w-[var(--card)] w-full max-w-[117px] cursor-pointer transition-transform duration-100 hover:scale-105">
-      <Image
+      <img
         src={resonator.thumbnailImageUrl}
         alt={resonator.resonatorName}
         width={117}
         height={117}
-        priority
         className={
           "object-contain " + (resonator.userResonatorId === null ? "opacity-60 grayscale" : "")
         }
