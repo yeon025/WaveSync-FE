@@ -1,0 +1,3 @@
+interface CreateResonatorResponse {
+  resonatorName: string;
+}
