@@ -18,8 +18,10 @@ export default function ResonatorSetting({ userResonatorId, resonatorSetting }: 
   const [modal, setModal] = useState({ isOpen: false, title: "", message: "" });
 
   const handleSave = async () => {
-    const weaponRefineLevel = weapon.refineLevel;
-    const result = await updateResonator(userResonatorId, { weaponRefineLevel, nodes });
+    const result = await updateResonator(userResonatorId, {
+      weaponRefineLevel: weapon.refineLevel,
+      nodes,
+    });
 
     if (result.code != "OK") {
       setModal({

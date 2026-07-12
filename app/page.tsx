@@ -15,12 +15,9 @@ export default async function Page() {
 
       <div className="my-8 flex items-center justify-end gap-8">
         {/* 삭제 버튼 */}
-        <IconButton
-          icon="/trash-bin.svg"
-          alt="삭제"
-          size={38}
-          // onClick={handleDelete}
-        />
+        <Link href="/delete">
+          <IconButton icon="/trash-bin.svg" alt="삭제 페이지로 이동" size={38} />
+        </Link>
 
         {/* 업로드 페이지로 이동 버튼 */}
         <Link href="/upload">

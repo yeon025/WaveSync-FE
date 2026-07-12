@@ -1,0 +1,3 @@
+interface DeleteResonatorRequest {
+  userResonatorIds: number[];
+}

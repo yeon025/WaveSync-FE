@@ -5,7 +5,7 @@ import Image from "next/image";
 import UploadForm from "@/components/upload/UploadForm";
 import IconButton from "@/components/common/IconButton";
 
-export default function Upload() {
+export default function Page() {
   return (
     <main className="flex min-h-screen items-center justify-center">
       {/* 닫기 버튼 */}

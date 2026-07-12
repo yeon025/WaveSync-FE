@@ -109,3 +109,19 @@ export async function updateResonator(
 
   return result;
 }
+
+export async function deleteResonator(body: DeleteResonatorRequest): Promise<ApiResponse<void>> {
+  const response = await fetch(`${API_URL}/api/resonators`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  const result = await response.json();
+
+  console.log(result);
+
+  return result;
+}
