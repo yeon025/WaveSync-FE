@@ -6,12 +6,12 @@ import { getParticle } from "@/utils/text";
 interface Props {
   weapon: {
     refineLevel: number;
-    refineType: string;
-    refine1Value: number;
-    refine2Value: number;
-    refine3Value: number;
-    refine4Value: number;
-    refine5Value: number;
+    refineType: string | null;
+    refine1Value: number | null;
+    refine2Value: number | null;
+    refine3Value: number | null;
+    refine4Value: number | null;
+    refine5Value: number | null;
     imageUrl: string;
   };
   onChange: (weapon: ResonatorSettingResponse["weapon"]) => void;
@@ -93,10 +93,12 @@ export default function WeaponEditor({ weapon, onChange }: Props) {
         </div>
 
         {/* 효과 */}
-        <p className="mt-8 text-center text-base md:text-xl lg:mt-12">
-          {statLabels[weapon.refineType] ?? weapon.refineType}
-          {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)} {value}% 증가된다.
-        </p>
+        {weapon.refineType != null && value != null && (
+          <p className="mt-8 text-center text-base md:text-xl lg:mt-12">
+            {statLabels[weapon.refineType] ?? weapon.refineType}
+            {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)} {value}% 증가된다.
+          </p>
+        )}
       </div>
     </section>
   );

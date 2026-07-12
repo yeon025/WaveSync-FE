@@ -27,7 +27,7 @@ export default function Page() {
         {/* 예시 이미지 */}
         <section className="mx-6 mt-6">
           <Image
-            src="/images/example/profile.png"
+            src="/images/profile.png"
             alt="프로필 예시"
             width={1638}
             height={922}
