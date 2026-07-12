@@ -2,11 +2,13 @@ import { useId, useRef, useState } from "react";
 import { createResonator } from "@/api/resonator.api";
 import { validateImage } from "@/utils/validation";
 import { getParticle } from "@/utils/text";
+import LoadingModal from "../common/LoadingModal";
 import Button from "@/components/common/Button";
 import Modal from "@/components/common/Modal";
 
 export default function UploadForm() {
   const [modal, setModal] = useState({ isOpen: false, title: "", message: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   // 파일 input과 연결할 고유 id 생성
   const inputId = useId();
@@ -64,8 +66,12 @@ export default function UploadForm() {
       return;
     }
 
+    setIsLoading(true);
+
     // 업로드 API 호출
     const result = await createResonator(selectedFile);
+
+    setIsLoading(false);
 
     if (result.data == null) {
       setModal({
@@ -85,6 +91,8 @@ export default function UploadForm() {
 
   return (
     <>
+      <LoadingModal isOpen={isLoading} />
+
       <form onSubmit={handleUpload} className="mx-auto mt-8 max-w-xl">
         <input
           id={inputId}

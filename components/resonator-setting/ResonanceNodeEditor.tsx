@@ -53,8 +53,8 @@ export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
   };
 
   return (
-    <section className="flex flex-col lg:w-[470px]">
-      <h1 className="text-2xl lg:text-3xl">공명 노드</h1>
+    <section className="flex flex-col lg:w-[30vw]">
+      <h1 className="text-xl lg:text-2xl xl:text-3xl">공명 노드</h1>
 
       <div className="mt-3 rounded-[10px] border border-[#848484] pb-8">
         <svg viewBox="-40 130 600 430" className="lg:100 w-auto origin-top">

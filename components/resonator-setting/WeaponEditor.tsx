@@ -51,8 +51,8 @@ export default function WeaponEditor({ weapon, onChange }: Props) {
   const value = getRefineValue(weapon.refineLevel);
 
   return (
-    <section className="flex flex-col lg:w-[470px]">
-      <h1 className="text-2xl lg:text-3xl">무기 재련</h1>
+    <section className="flex flex-col lg:w-[30vw]">
+      <h1 className="text-xl lg:text-2xl xl:text-3xl">무기 재련</h1>
 
       <div className="relative mt-3 rounded-[10px] border border-[#848484] px-4 py-8">
         {/* 무기 이미지 */}
@@ -64,12 +64,12 @@ export default function WeaponEditor({ weapon, onChange }: Props) {
         <div className="mt-10 flex items-center justify-center gap-3">
           <button
             onClick={decrease}
-            className="cursor-pointer text-3xl font-bold transition-colors hover:text-yellow-400 lg:text-4xl"
+            className="cursor-pointer text-3xl font-bold transition-colors hover:text-yellow-400 xl:text-4xl"
           >
             −
           </button>
 
-          <div className="flex gap-1">
+          <div className="flex">
             {Array.from({ length: 5 }).map((_, index) => (
               <img
                 key={index}
@@ -79,14 +79,14 @@ export default function WeaponEditor({ weapon, onChange }: Props) {
                 alt={`무기 재련 ${index + 1}`}
                 width={40}
                 height={40}
-                className="lg:h-[56px] lg:w-[56px]"
+                className="lg:h-[50px] lg:w-[50px] xl:h-[56px] xl:w-[56px]"
               />
             ))}
           </div>
 
           <button
             onClick={increase}
-            className="cursor-pointer text-3xl font-bold transition-colors hover:text-yellow-400 lg:text-4xl"
+            className="cursor-pointer text-3xl font-bold transition-colors hover:text-yellow-400 xl:text-4xl"
           >
             ＋
           </button>
