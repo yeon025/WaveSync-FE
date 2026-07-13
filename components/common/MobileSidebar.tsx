@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import WaveSyncLogo from "./Logo";
+import Logo from "./Logo";
 
 interface Props {
   active: "resonator-info" | "resonator-setting";
@@ -34,7 +34,7 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
   return (
     <aside className="mb-5 lg:hidden">
       {/* 로고 */}
-      <WaveSyncLogo textSize="text-2xl" fontSize="font-normal" direction="row" imageSize={100} />
+      <Logo textSize="text-2xl" fontSize="font-normal" direction="row" imageSize={100} />
 
       {/* 메뉴 */}
       <nav className="flex gap-3 px-3">

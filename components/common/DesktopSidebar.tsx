@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import WaveSyncLogo from "./Logo";
+import Logo from "./Logo";
 
 interface Props {
   active: "resonator-info" | "resonator-setting";
@@ -32,9 +32,9 @@ const navigationItems = [
 
 export default function DesktopSidebar({ active, userResonatorId }: Props) {
   return (
-    <aside className="fixed hidden h-screen w-[clamp(72px,5vw,120px)] shrink-0 flex-col border-r border-white/15 lg:flex">
+    <aside className="fixed hidden h-screen w-[clamp(95px,6vw,120px)] shrink-0 flex-col border-r border-white/15 lg:flex">
       {/* 로고 */}
-      <WaveSyncLogo
+      <Logo
         textSize="text-[clamp(12px,0.8vw,16px)]"
         fontSize="font-normal"
         direction="column"

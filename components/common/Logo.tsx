@@ -8,26 +8,20 @@ interface Props {
   direction: "row" | "column";
 }
 
-export default function WaveSyncLogo({ imageSize, textSize, fontSize, direction }: Props) {
+export default function Logo({ imageSize, textSize, fontSize, direction }: Props) {
   const isColumn = direction === "column";
 
   return (
     <Link
       href="/"
-      className={`flex ${isColumn ? "flex-col items-center" : "items-center justify-center gap-3"}`}
+      className={`flex ${isColumn ? "flex-col items-center" : "items-center justify-center"}`}
     >
-      <Image
-        src="/images/wavesync-logo.png"
-        alt="WaveSync 로고"
-        width={imageSize}
-        height={imageSize}
-        priority
-      />
+      <Image src="/images/logo.png" alt="로고" width={imageSize} height={imageSize} priority />
 
       <div className={`flex tracking-[0.22px] ${textSize} ${fontSize}`}>
-        <span>Wave</span>
+        <span>Reso</span>
         <span className="bg-gradient-to-r from-[#5b7cff] to-[#69e3ff] bg-clip-text text-transparent">
-          Sync
+          Collector
         </span>
       </div>
     </Link>
