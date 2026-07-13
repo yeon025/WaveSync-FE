@@ -12,7 +12,7 @@ export default function ResonatorCard({ resonator, mode, selected, onClick }: Pr
 
   return (
     <article
-      className="mx-auto w-[var(--card)] w-full max-w-[117px] cursor-pointer transition-transform duration-100 hover:scale-105"
+      className="mx-auto w-[var(--card)] cursor-pointer transition-transform duration-100 hover:scale-105"
       onClick={mode === "delete" ? onClick : undefined}
     >
       <img

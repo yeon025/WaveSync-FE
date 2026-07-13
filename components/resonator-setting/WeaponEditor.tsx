@@ -51,10 +51,10 @@ export default function WeaponEditor({ weapon, onChange }: Props) {
   const value = getRefineValue(weapon.refineLevel);
 
   return (
-    <section className="flex flex-col lg:w-[30vw]">
+    <section className="flex flex-col lg:w-[30vw] 2xl:w-[28vw]">
       <h1 className="text-xl lg:text-2xl xl:text-3xl">무기 재련</h1>
 
-      <div className="relative mt-3 rounded-[10px] border border-[#848484] px-4 py-8">
+      <div className="mt-3 flex flex-col justify-center rounded-[10px] border border-[#848484] px-4 py-8 lg:h-[45vh] 2xl:h-[40vh]">
         {/* 무기 이미지 */}
         <div className="flex justify-center">
           <img src={weapon.imageUrl} alt="weapon" width={160} height={160} />
@@ -79,7 +79,7 @@ export default function WeaponEditor({ weapon, onChange }: Props) {
                 alt={`무기 재련 ${index + 1}`}
                 width={40}
                 height={40}
-                className="lg:h-[50px] lg:w-[50px] xl:h-[56px] xl:w-[56px]"
+                className="lg:h-[50px] lg:w-[50px] 2xl:h-[56px] 2xl:w-[56px]"
               />
             ))}
           </div>
@@ -94,7 +94,7 @@ export default function WeaponEditor({ weapon, onChange }: Props) {
 
         {/* 효과 */}
         {weapon.refineType != null && value != null && (
-          <p className="mt-8 text-center text-base md:text-xl lg:mt-12">
+          <p className="mt-8 text-center text-base lg:text-lg xl:text-xl">
             {statLabels[weapon.refineType] ?? weapon.refineType}
             {getParticle(statLabels[weapon.refineType] ?? weapon.refineType)} {value}% 증가된다.
           </p>

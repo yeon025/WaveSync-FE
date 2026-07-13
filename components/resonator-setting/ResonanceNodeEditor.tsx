@@ -53,18 +53,18 @@ export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
   };
 
   return (
-    <section className="flex flex-col lg:w-[30vw]">
+    <section className="flex flex-col lg:w-[30vw] 2xl:w-[28vw]">
       <h1 className="text-xl lg:text-2xl xl:text-3xl">공명 노드</h1>
 
-      <div className="mt-3 rounded-[10px] border border-[#848484] pb-8">
-        <svg viewBox="-40 130 600 430" className="lg:100 w-auto origin-top">
+      <div className="mt-3 flex flex-col justify-center rounded-[10px] border border-[#848484] pb-8 lg:h-[45vh] 2xl:h-[40vh]">
+        <svg viewBox="-40 150 600 375" className="w-auto origin-top">
           {/* 연결선 */}
           <path
             ref={pathRef}
             d="
-              M 70 500
-              C 70 480, 150 430, 265 430
-              C 380 430, 460 480, 460 500
+              M 90 470
+              C 100 450, 160 400, 275 400
+              C 370 400, 430 450, 440 470
             "
             stroke="#E6E6E6"
             strokeWidth="3"
@@ -90,7 +90,7 @@ export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
                   x1={point.x}
                   y1={point.y}
                   x2={point.x}
-                  y2={point.y - 230}
+                  y2={point.y - 200}
                   stroke="#E6E6E6"
                   strokeWidth={3}
                   strokeLinecap="round"
@@ -99,10 +99,10 @@ export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
                 {/* 메인 노드 */}
                 <image
                   href="/star-node-active.svg"
-                  x={point.x - 40}
-                  y={point.y - 40}
-                  width="80"
-                  height="80"
+                  x={point.x - 35}
+                  y={point.y - 35}
+                  width="70"
+                  height="70"
                 />
 
                 {/* 서브 노드 */}
@@ -110,10 +110,10 @@ export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
                   <image
                     key={`${node.branchPosition}-${node.nodePosition}`}
                     href={node.active ? "/star-node-active.svg" : "/star-node-deactive.svg"}
-                    x={point.x - 40}
-                    y={point.y - 150 - i * 110}
-                    width="80"
-                    height="80"
+                    x={point.x - 35}
+                    y={point.y - 130 - i * 90}
+                    width="70"
+                    height="70"
                     className="cursor-pointer"
                     onClick={() => setSelectedNode(node)}
                   />
@@ -127,16 +127,18 @@ export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
           <div className="flex items-center justify-center gap-4">
             <button onClick={handleToggleNode} className="flex cursor-pointer items-center gap-2">
               <span
-                className={`flex h-5 w-5 items-center justify-center rounded-full border-2 transition-colors ${
+                className={`flex h-4 w-4 items-center justify-center rounded-full border-2 transition-colors lg:h-5 lg:w-5 ${
                   selectedNode.active ? "border-yellow-400" : "border-gray-400"
                 }`}
               >
-                {selectedNode.active && <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />}
+                {selectedNode.active && (
+                  <span className="h-2 w-2 rounded-full bg-yellow-400 lg:h-2.5 lg:w-2.5" />
+                )}
               </span>
             </button>
 
             {selectedNode.stat && (
-              <p className="text-base md:text-xl">
+              <p className="text-base lg:text-lg xl:text-xl">
                 {statLabels[selectedNode.stat.type] ?? selectedNode.stat.type}
                 {getParticle(statLabels[selectedNode.stat.type] ?? selectedNode.stat.type)}{" "}
                 {selectedNode.stat.value}% 증가된다.
