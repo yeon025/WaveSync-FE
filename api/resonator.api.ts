@@ -14,6 +14,8 @@ export async function getResonators(): Promise<ResonatorSummaryResponse[]> {
 
     const result = await response.json();
 
+    // console.log(result.data);
+
     return result.data;
   } catch (error) {
     console.error("[공명자 목록 조회 실패]", error);
@@ -38,7 +40,7 @@ export async function getResonatorDetail(
 
     const result = await response.json();
 
-    console.log(result.data);
+    // console.log(result.data);
 
     return result.data;
   } catch (error) {
@@ -64,7 +66,7 @@ export async function getResonatorSetting(
 
     const result = await response.json();
 
-    console.log(result.data);
+    // console.log(result.data);
 
     return result.data;
   } catch (error) {
@@ -86,7 +88,7 @@ export async function createResonator(file: File): Promise<ApiResponse<CreateRes
 
   const result = await response.json();
 
-  console.log(result);
+  // console.log(result);
 
   return result;
 }
@@ -105,7 +107,7 @@ export async function updateResonator(
 
   const result = await response.json();
 
-  console.log(result);
+  // console.log(result);
 
   return result;
 }
@@ -121,7 +123,7 @@ export async function deleteResonator(body: DeleteResonatorRequest): Promise<Api
 
   const result = await response.json();
 
-  console.log(result);
+  // console.log(result);
 
   return result;
 }
