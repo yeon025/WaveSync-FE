@@ -16,6 +16,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <main className="relative min-h-screen">
+      <div className="absolute top-0 bottom-0 left-[clamp(95px,6vw,120px)] hidden w-px bg-white/15 lg:block" />
       {/* 모바일 Sidebar */}
       <MobileSidebar active="resonator-info" userResonatorId={userResonatorId} />
 

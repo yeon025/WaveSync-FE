@@ -32,7 +32,7 @@ const navigationItems = [
 
 export default function DesktopSidebar({ active, userResonatorId }: Props) {
   return (
-    <aside className="fixed hidden h-screen w-[clamp(95px,6vw,120px)] shrink-0 flex-col border-r border-white/15 lg:flex">
+    <aside className="fixed hidden h-screen w-[clamp(95px,6vw,120px)] shrink-0 flex-col lg:flex">
       {/* 로고 */}
       <Logo
         textSize="text-[clamp(12px,0.8vw,16px)]"
