@@ -1,10 +1,10 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function getResonators(): Promise<ApiResponse<ResonatorSummaryResponse[]>> {
+export async function getResonators(): Promise<ResonatorSummaryResponse[]> {
   try {
     const response = await fetch(`${API_URL}/api/resonators`, {
       method: "GET",
-      next: { revalidate: 3600 },
+      cache: "no-store",
     });
 
     if (!response.ok) {
@@ -26,11 +26,11 @@ export async function getResonators(): Promise<ApiResponse<ResonatorSummaryRespo
 
 export async function getResonatorDetail(
   userResonatorId: string,
-): Promise<ApiResponse<ResonatorDetailResponse>> {
+): Promise<ResonatorDetailResponse> {
   try {
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}`, {
       method: "GET",
-      next: { revalidate: 3600 },
+      cache: "no-store",
     });
 
     if (!response.ok) {
@@ -52,7 +52,7 @@ export async function getResonatorDetail(
 
 export async function getResonatorSetting(
   userResonatorId: string,
-): Promise<ApiResponse<ResonatorSettingResponse>> {
+): Promise<ResonatorSettingResponse> {
   try {
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/setting`, {
       method: "GET",
@@ -97,12 +97,13 @@ export async function updateResonator(
   userResonatorId: string,
   body: UpdateResonatorRequest,
 ): Promise<ApiResponse<void>> {
-  const response = await fetch(`/api/resonators/${userResonatorId}/setting`, {
+  const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/setting`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
+    cache: "no-store",
   });
 
   const result = await response.json();
@@ -113,12 +114,13 @@ export async function updateResonator(
 }
 
 export async function deleteResonator(body: DeleteResonatorRequest): Promise<ApiResponse<void>> {
-  const response = await fetch(`/api/resonators`, {
+  const response = await fetch(`${API_URL}/api/resonators`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
+    cache: "no-store",
   });
 
   const result = await response.json();
