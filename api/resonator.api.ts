@@ -56,7 +56,7 @@ export async function getResonatorSetting(
   try {
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/setting`, {
       method: "GET",
-      next: { revalidate: 3600 },
+      cache: "no-store",
     });
 
     if (!response.ok) {
