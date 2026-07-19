@@ -1,6 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function getResonators(): Promise<ResonatorSummaryResponse[]> {
+export async function getResonators(): Promise<ApiResponse<ResonatorSummaryResponse[]>> {
   try {
     const response = await fetch(`${API_URL}/api/resonators`, {
       method: "GET",
@@ -26,7 +26,7 @@ export async function getResonators(): Promise<ResonatorSummaryResponse[]> {
 
 export async function getResonatorDetail(
   userResonatorId: string,
-): Promise<ResonatorDetailResponse> {
+): Promise<ApiResponse<ResonatorDetailResponse>> {
   try {
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}`, {
       method: "GET",
@@ -52,7 +52,7 @@ export async function getResonatorDetail(
 
 export async function getResonatorSetting(
   userResonatorId: string,
-): Promise<ResonatorSettingResponse> {
+): Promise<ApiResponse<ResonatorSettingResponse>> {
   try {
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/setting`, {
       method: "GET",
