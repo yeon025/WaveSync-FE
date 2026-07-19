@@ -7,7 +7,7 @@ import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
 
 interface Props {
-  params: Promise<{ userResonatorId: number }>;
+  params: Promise<{ userResonatorId: string }>;
 }
 
 export default async function Page({ params }: Props) {

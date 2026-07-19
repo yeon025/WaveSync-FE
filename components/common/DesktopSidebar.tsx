@@ -6,7 +6,7 @@ import Logo from "./Logo";
 
 interface Props {
   active: "resonator-info" | "resonator-setting";
-  userResonatorId: number;
+  userResonatorId: string;
 }
 
 const navigationItems = [

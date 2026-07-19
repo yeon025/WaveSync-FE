@@ -4,7 +4,7 @@ export async function getResonators(): Promise<ResonatorSummaryResponse[]> {
   try {
     const response = await fetch(`${API_URL}/api/resonators`, {
       method: "GET",
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
@@ -25,12 +25,12 @@ export async function getResonators(): Promise<ResonatorSummaryResponse[]> {
 }
 
 export async function getResonatorDetail(
-  userResonatorId: number,
+  userResonatorId: string,
 ): Promise<ResonatorDetailResponse> {
   try {
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}`, {
       method: "GET",
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
@@ -51,12 +51,12 @@ export async function getResonatorDetail(
 }
 
 export async function getResonatorSetting(
-  userResonatorId: number,
+  userResonatorId: string,
 ): Promise<ResonatorSettingResponse> {
   try {
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/setting`, {
       method: "GET",
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
@@ -80,7 +80,7 @@ export async function createResonator(file: File): Promise<ApiResponse<CreateRes
   const formData = new FormData();
   formData.append("resonatorProfile", file);
 
-  const response = await fetch(`${API_URL}/api/resonators`, {
+  const response = await fetch(`/api/resonators`, {
     method: "POST",
     body: formData,
     cache: "no-store",
@@ -94,10 +94,10 @@ export async function createResonator(file: File): Promise<ApiResponse<CreateRes
 }
 
 export async function updateResonator(
-  userResonatorId: number,
+  userResonatorId: string,
   body: UpdateResonatorRequest,
 ): Promise<ApiResponse<void>> {
-  const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/setting`, {
+  const response = await fetch(`/api/resonators/${userResonatorId}/setting`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -113,7 +113,7 @@ export async function updateResonator(
 }
 
 export async function deleteResonator(body: DeleteResonatorRequest): Promise<ApiResponse<void>> {
-  const response = await fetch(`${API_URL}/api/resonators`, {
+  const response = await fetch(`/api/resonators`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
