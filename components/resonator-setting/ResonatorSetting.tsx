@@ -8,7 +8,7 @@ import ResonanceNodeEditor from "@/components/resonator-setting/ResonanceNodeEdi
 import WeaponEditor from "@/components/resonator-setting/WeaponEditor";
 
 interface Props {
-  userResonatorId: number;
+  userResonatorId: string;
   resonatorSetting: ResonatorSettingResponse;
 }
 

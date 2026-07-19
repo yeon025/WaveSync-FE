@@ -5,7 +5,7 @@ import DesktopSidebar from "@/components/common/DesktopSidebar";
 import { getResonatorSetting } from "@/api/resonator.api";
 
 interface Props {
-  params: Promise<{ userResonatorId: number }>;
+  params: Promise<{ userResonatorId: string }>;
 }
 
 export default async function Page({ params }: Props) {
