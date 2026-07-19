@@ -21,8 +21,8 @@ export async function PATCH(
   const result: ApiResponse<void> = await response.json();
 
   if (result.code == "OK") {
-    revalidatePath("/resonators/${userResonatorId}");
-    revalidatePath("/resonators/${userResonatorId}/setting");
+    revalidatePath(`/resonators/${userResonatorId}`);
+    revalidatePath(`/resonators/${userResonatorId}/setting`);
   }
 
   // console.log(result);
