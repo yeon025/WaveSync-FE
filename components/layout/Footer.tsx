@@ -4,7 +4,7 @@ export default async function Footer() {
       <div className="mx-auto max-w-6xl space-y-4">
         {/* 서비스명 및 연락처 */}
         <div>
-          <h3 className="text-lg font-bold text-white">Resocollector</h3>
+          <h3 className="text-lg font-bold text-white">ResoCollector</h3>
           <p className="mt-1 text-sm">
             Contact:{" "}
             <a
@@ -21,7 +21,7 @@ export default async function Footer() {
         {/* 면책 조항 및 저작권 */}
         <div className="space-y-2 text-sm leading-relaxed text-gray-500">
           <p>
-            Resocollector는 <strong>명조: 워더링 웨이브(Wuthering Waves)</strong>의 비공식 팬
+            ResoCollector는 <strong>명조: 워더링 웨이브(Wuthering Waves)</strong>의 비공식 팬
             사이트이며, <strong>Kuro Games</strong>와 제휴, 후원 또는 공식적인 관련이 없습니다.
           </p>
 
