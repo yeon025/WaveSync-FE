@@ -80,7 +80,7 @@ export async function createResonator(file: File): Promise<ApiResponse<CreateRes
   const formData = new FormData();
   formData.append("resonatorProfile", file);
 
-  const response = await fetch(`/api/resonators`, {
+  const response = await fetch(`${API_URL}/api/resonators`, {
     method: "POST",
     body: formData,
     cache: "no-store",
