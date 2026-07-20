@@ -2,10 +2,15 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getResonators(): Promise<ResonatorSummaryResponse[]> {
   try {
+    const start = Date.now();
+
     const response = await fetch(`${API_URL}/api/resonators`, {
       method: "GET",
       cache: "no-store",
     });
+
+    const end = Date.now();
+    console.log(`[백엔드 fetch 왕복 시간] ${end - start}ms`);
 
     if (!response.ok) {
       const text = await response.text();
@@ -28,10 +33,15 @@ export async function getResonatorDetail(
   userResonatorId: string,
 ): Promise<ResonatorDetailResponse> {
   try {
+    const start = Date.now();
+
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}`, {
       method: "GET",
       cache: "no-store",
     });
+
+    const end = Date.now();
+    console.log(`[백엔드 fetch 왕복 시간] ${end - start}ms`);
 
     if (!response.ok) {
       const text = await response.text();
@@ -54,6 +64,8 @@ export async function getResonatorSetting(
   userResonatorId: string,
 ): Promise<ResonatorSettingResponse> {
   try {
+    const start = Date.now();
+
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/setting`, {
       method: "GET",
       cache: "no-store",
@@ -63,6 +75,9 @@ export async function getResonatorSetting(
       const text = await response.text();
       throw new Error(text);
     }
+
+    const end = Date.now();
+    console.log(`[백엔드 fetch 왕복 시간] ${end - start}ms`);
 
     const result = await response.json();
 
