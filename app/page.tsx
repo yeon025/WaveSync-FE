@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { getResonators } from "@/api/resonator.api";
 import WaveSyncLogo from "@/components/common/Logo";
 import ResonatorGrid from "@/components/resonator-summary/ResonatorGrid";
@@ -5,8 +8,12 @@ import Button from "@/components/common/Button";
 import Link from "next/link";
 import IconButton from "@/components/common/IconButton";
 
-export default async function Page() {
-  const resonators = await getResonators();
+export default function Page() {
+  const [resonators, setResonators] = useState<ResonatorSummaryResponse[]>([]);
+
+  useEffect(() => {
+    getResonators().then(setResonators);
+  }, []);
 
   return (
     <main className="mx-auto px-6 py-10 lg:px-8">
