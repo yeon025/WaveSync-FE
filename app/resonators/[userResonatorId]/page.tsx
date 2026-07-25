@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { getResonatorDetail } from "@/api/resonator.api";
 import ResonatorInfo from "@/components/resonator-detail/ResonatorInfo";
 import WeaponCard from "@/components/resonator-detail/WeaponCard";
@@ -6,13 +10,15 @@ import MobileResonanceChain from "@/components/resonator-detail/MobileResonanceC
 import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
 
-interface Props {
-  params: Promise<{ userResonatorId: string }>;
-}
+export default function Page() {
+  const { userResonatorId } = useParams<{ userResonatorId: string }>();
+  const [resonatorDetail, setResonatorDetail] = useState<ResonatorDetailResponse>();
 
-export default async function Page({ params }: Props) {
-  const { userResonatorId } = await params;
-  const resonatorDetail = await getResonatorDetail(userResonatorId);
+  useEffect(() => {
+    getResonatorDetail(userResonatorId).then(setResonatorDetail);
+  }, [userResonatorId]);
+
+  if (!resonatorDetail) return;
 
   return (
     <main className="relative min-h-screen">

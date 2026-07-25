@@ -1,16 +1,22 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import ResonatorSetting from "@/components/resonator-setting/ResonatorSetting";
 import MobileSidebar from "@/components/common/MobileSidebar";
 import DesktopSidebar from "@/components/common/DesktopSidebar";
 
 import { getResonatorSetting } from "@/api/resonator.api";
 
-interface Props {
-  params: Promise<{ userResonatorId: string }>;
-}
+export default function Page() {
+  const { userResonatorId } = useParams<{ userResonatorId: string }>();
+  const [resonatorSetting, setResonatorSetting] = useState<ResonatorSettingResponse>();
 
-export default async function Page({ params }: Props) {
-  const { userResonatorId } = await params;
-  const resonatorSetting = await getResonatorSetting(userResonatorId);
+  useEffect(() => {
+    getResonatorSetting(userResonatorId).then(setResonatorSetting);
+  }, [userResonatorId]);
+
+  if (!resonatorSetting) return;
 
   return (
     <main className="relative">

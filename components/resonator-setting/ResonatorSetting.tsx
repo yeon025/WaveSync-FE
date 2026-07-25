@@ -24,19 +24,11 @@ export default function ResonatorSetting({ userResonatorId, resonatorSetting }: 
     });
 
     if (result.code != "OK") {
-      setModal({
-        isOpen: true,
-        title: "수정 실패",
-        message: result.message,
-      });
+      setModal({ isOpen: true, title: "수정 실패", message: result.message });
       return;
     }
 
-    setModal({
-      isOpen: true,
-      title: "수정 완료",
-      message: `공명자 정보가 수정되었습니다.`,
-    });
+    setModal({ isOpen: true, title: "수정 완료", message: `공명자 정보가 수정되었습니다.` });
   };
 
   return (

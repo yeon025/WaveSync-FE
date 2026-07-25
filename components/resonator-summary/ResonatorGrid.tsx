@@ -44,12 +44,7 @@ export default function ResonatorGrid({ resonators }: Props) {
         isOpen={modal.isOpen}
         title={modal.title}
         message={modal.message}
-        onClose={() =>
-          setModal((prev) => ({
-            ...prev,
-            isOpen: false,
-          }))
-        }
+        onClose={() => setModal((prev) => ({ ...prev, isOpen: false }))}
       />
     </section>
   );
