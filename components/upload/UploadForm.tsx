@@ -1,3 +1,5 @@
+"use client";
+
 import { useId, useRef, useState } from "react";
 import { createResonator } from "@/api/resonator.api";
 import { validateImage } from "@/utils/validation";
@@ -47,22 +49,14 @@ export default function UploadForm() {
 
     // 이미지가 선택되지 않은 경우
     if (!selectedFile) {
-      setModal({
-        isOpen: true,
-        title: "알림",
-        message: "이미지를 선택해주세요.",
-      });
+      setModal({ isOpen: true, title: "알림", message: "이미지를 선택해주세요." });
       return;
     }
 
     // 이미지 크기 검증
     const message = validateImage(selectedFile);
     if (message) {
-      setModal({
-        isOpen: true,
-        title: "알림",
-        message,
-      });
+      setModal({ isOpen: true, title: "알림", message });
       return;
     }
 
@@ -74,11 +68,7 @@ export default function UploadForm() {
     setIsLoading(false);
 
     if (result.data == null) {
-      setModal({
-        isOpen: true,
-        title: "등록 실패",
-        message: result.message,
-      });
+      setModal({ isOpen: true, title: "등록 실패", message: result.message });
       return;
     }
 
@@ -153,12 +143,7 @@ export default function UploadForm() {
         isOpen={modal.isOpen}
         title={modal.title}
         message={modal.message}
-        onClose={() =>
-          setModal((prev) => ({
-            ...prev,
-            isOpen: false,
-          }))
-        }
+        onClose={() => setModal((prev) => ({ ...prev, isOpen: false }))}
       />
     </>
   );
