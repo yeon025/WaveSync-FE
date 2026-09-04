@@ -79,7 +79,7 @@ export default function ResonatorInfo({ resonator }: Props) {
       {/* 스탯 */}
       <div className="flex flex-col gap-[0.5vh]">
         {Object.entries(resonator.stat)
-          .filter(([, value]) => value !== 0)
+          .filter(([, value]) => Number(value) !== 0)
           .map(([key, value]) => (
             <StatBox
               key={key}
