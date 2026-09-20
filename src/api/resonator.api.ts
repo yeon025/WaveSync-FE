@@ -113,6 +113,28 @@ export async function updateResonator(
   return result;
 }
 
+export async function getResonatorEcho(userResonatorId: string): Promise<ResonatorEcho[]> {
+  try {
+    const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/echo`, {
+      method: "GET",
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(text);
+    }
+
+    const result: ResonatorEchoResponse = await response.json();
+
+    return result.data ?? [];
+  } catch (error) {
+    console.error("[에코 목록 조회 실패]", error);
+
+    throw error;
+  }
+}
+
 export async function deleteResonator(body: DeleteResonatorRequest): Promise<ApiResponse<void>> {
   const response = await fetch(`${API_URL}/api/resonators`, {
     method: "DELETE",
