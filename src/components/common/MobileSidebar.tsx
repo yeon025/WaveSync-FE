@@ -1,32 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import Logo from "./Logo";
+import { EchoIcon, ResonatorInfoIcon, ResonatorSettingIcon } from "./Icons";
 
 interface Props {
-  active: "resonator-info" | "resonator-setting";
+  active: "resonator-info" | "resonator-setting" | "resonator-echo";
   userResonatorId: string;
 }
+
+const ACTIVE_ICON_COLOR = "text-[#d6b15c]";
+const INACTIVE_ICON_COLOR = "text-[#4e4f5c]";
 
 const navigationItems = [
   {
     id: "resonator-info",
     label: "공명자 정보",
     href: "",
-    icon: {
-      active: "/resonator-info-active.svg",
-      inactive: "/resonator-info-deactive.svg",
-    },
+    Icon: ResonatorInfoIcon,
+  },
+  {
+    id: "resonator-echo",
+    label: "공명자 에코",
+    href: "/echo",
+    Icon: EchoIcon,
   },
   {
     id: "resonator-setting",
     label: "공명자 설정",
     href: "/setting",
-    icon: {
-      active: "/resonator-setting-active.svg",
-      inactive: "/resonator-setting-deactive.svg",
-    },
+    Icon: ResonatorSettingIcon,
   },
 ] as const;
 
@@ -40,6 +43,7 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
       <nav className="flex gap-3 px-3">
         {navigationItems.map((item) => {
           const isActive = item.id === active;
+          const iconColor = isActive ? ACTIVE_ICON_COLOR : INACTIVE_ICON_COLOR;
 
           return (
             <Link
@@ -48,19 +52,9 @@ export default function MobileSidebar({ active, userResonatorId }: Props) {
               aria-current={isActive ? "page" : undefined}
               className={`relative flex flex-col items-center gap-1.5 rounded-2xl p-3 ${isActive ? "bg-[#d6b15c12]" : ""} `}
             >
-              <Image
-                src={isActive ? item.icon.active : item.icon.inactive}
-                alt=""
-                aria-hidden
-                width={24}
-                height={24}
-              />
+              <item.Icon className={`h-6 w-6 ${iconColor}`} />
 
-              <span
-                className={`text-xs font-medium ${isActive ? "text-[#d6b15c]" : "text-[#4e4f5c]"}`}
-              >
-                {item.label}
-              </span>
+              <span className={`text-xs font-medium ${iconColor}`}>{item.label}</span>
             </Link>
           );
         })}

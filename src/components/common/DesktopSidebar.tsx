@@ -1,32 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import Logo from "./Logo";
+import { EchoIcon, ResonatorInfoIcon, ResonatorSettingIcon } from "./Icons";
 
 interface Props {
-  active: "resonator-info" | "resonator-setting";
+  active: "resonator-info" | "resonator-setting" | "resonator-echo";
   userResonatorId: string;
 }
+
+const ACTIVE_ICON_COLOR = "text-[#d6b15c]";
+const INACTIVE_ICON_COLOR = "text-[#4e4f5c]";
 
 const navigationItems = [
   {
     id: "resonator-info",
     label: "공명자 정보",
     href: "",
-    icon: {
-      active: "/resonator-info-active.svg",
-      inactive: "/resonator-info-deactive.svg",
-    },
+    Icon: ResonatorInfoIcon,
+  },
+  {
+    id: "resonator-echo",
+    label: "공명자 에코",
+    href: "/echo",
+    Icon: EchoIcon,
   },
   {
     id: "resonator-setting",
     label: "공명자 설정",
     href: "/setting",
-    icon: {
-      active: "/resonator-setting-active.svg",
-      inactive: "/resonator-setting-deactive.svg",
-    },
+    Icon: ResonatorSettingIcon,
   },
 ] as const;
 
@@ -48,6 +51,7 @@ export default function DesktopSidebar({ active, userResonatorId }: Props) {
       <nav aria-label="주요 메뉴" className="flex flex-1 flex-col gap-[1.5vh] px-[0.3vw]">
         {navigationItems.map((item) => {
           const isActive = item.id === active;
+          const iconColor = isActive ? ACTIVE_ICON_COLOR : INACTIVE_ICON_COLOR;
 
           return (
             <Link
@@ -59,19 +63,11 @@ export default function DesktopSidebar({ active, userResonatorId }: Props) {
               } `}
             >
               <div className="relative h-[clamp(20px,1.5vw,32px)] w-[clamp(20px,1.5vw,32px)]">
-                <Image
-                  src={isActive ? item.icon.active : item.icon.inactive}
-                  alt=""
-                  aria-hidden
-                  fill
-                  className="object-contain"
-                />
+                <item.Icon className={`h-full w-full ${iconColor}`} />
               </div>
 
               <span
-                className={`text-center text-[clamp(10px,0.7vw,14px)] font-medium ${
-                  isActive ? "text-[#d6b15c]" : "text-[#4e4f5c]"
-                } `}
+                className={`text-center text-[clamp(10px,0.7vw,14px)] font-medium ${iconColor} `}
               >
                 {item.label}
               </span>
