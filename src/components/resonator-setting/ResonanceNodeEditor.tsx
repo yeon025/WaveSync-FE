@@ -56,7 +56,7 @@ export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
     <section className="flex flex-col lg:w-[30vw] 2xl:w-[28vw]">
       <h1 className="text-xl lg:text-2xl xl:text-3xl">공명 노드</h1>
 
-      <div className="mt-3 flex flex-col justify-center rounded-[10px] border border-[#848484] pb-8 lg:h-[45vh] 2xl:h-[40vh]">
+      <div className="mt-3 flex flex-col justify-center rounded-[10px] border border-[#848484] pb-8 lg:h-[45vh]">
         <svg viewBox="-40 150 600 375" className="w-auto origin-top">
           {/* 연결선 */}
           <path
@@ -138,7 +138,7 @@ export default function ResonanceNodeEditor({ nodes, onChange }: Props) {
             </button>
 
             {selectedNode.stat && (
-              <p className="text-base lg:text-lg xl:text-xl">
+              <p className="text-base lg:text-lg">
                 {statLabels[selectedNode.stat.type] ?? selectedNode.stat.type}
                 {getParticle(statLabels[selectedNode.stat.type] ?? selectedNode.stat.type)}{" "}
                 {selectedNode.stat.value}% 증가된다.
