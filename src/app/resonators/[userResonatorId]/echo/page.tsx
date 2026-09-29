@@ -27,7 +27,7 @@ export default function Page() {
       {/* 데스크탑 Sidebar */}
       <DesktopSidebar active="resonator-echo" userResonatorId={userResonatorId} />
 
-      <div className="mx-[5vw] grid grid-cols-1 gap-[3vh] pb-[5vh] lg:mx-[10vw] lg:grid-cols-5 lg:pt-[8vh]">
+      <div className="mx-[5vw] grid grid-cols-1 gap-[3vh] pb-[5vh] lg:ml-[10vw] lg:grid-cols-5 lg:pt-[8vh]">
         {echoes.map((echo, index) => (
           <Echo key={index} echo={echo} />
         ))}

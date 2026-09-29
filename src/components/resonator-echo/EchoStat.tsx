@@ -7,7 +7,7 @@ interface Props {
 
 export default function EchoStat({ type, value }: Props) {
   return (
-    <div className="flex items-center justify-between text-base">
+    <div className="flex items-center justify-between text-sm">
       <span>{statLabels[type] ?? type}</span>
 
       <span>{type === "attack" || type === "hp" || type === "defense" ? value : `${value}%`}</span>
