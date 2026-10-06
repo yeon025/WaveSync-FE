@@ -10,4 +10,9 @@ interface ResonatorEcho {
   subs: EchoStat[];
 }
 
-type ResonatorEchoResponse = ApiResponse<ResonatorEcho[]>;
+interface EchoListData {
+  echoes: ResonatorEcho[];
+  echoAnalysis: string | null;
+}
+
+type ResonatorEchoResponse = ApiResponse<EchoListData>;

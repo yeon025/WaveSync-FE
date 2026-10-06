@@ -113,7 +113,7 @@ export async function updateResonator(
   return result;
 }
 
-export async function getResonatorEcho(userResonatorId: string): Promise<ResonatorEcho[]> {
+export async function getResonatorEcho(userResonatorId: string): Promise<EchoListData> {
   try {
     const response = await fetch(`${API_URL}/api/resonators/${userResonatorId}/echo`, {
       method: "GET",
@@ -127,7 +127,7 @@ export async function getResonatorEcho(userResonatorId: string): Promise<Resonat
 
     const result: ResonatorEchoResponse = await response.json();
 
-    return result.data ?? [];
+    return result.data ?? { echoes: [], echoAnalysis: null };
   } catch (error) {
     console.error("[에코 목록 조회 실패]", error);
 
